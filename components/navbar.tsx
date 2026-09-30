@@ -3,14 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, GithubLogo, Terminal } from "@phosphor-icons/react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#939db81a] bg-[#0b0c14]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md transition-colors duration-200">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative h-8 w-8 overflow-hidden rounded border border-[#939db826] bg-[#141622] p-1 transition-colors group-hover:border-[#5560d6]">
+            <div className="relative h-8 w-8 overflow-hidden rounded border border-[var(--border)] bg-[var(--surface)] p-1 transition-colors group-hover:border-[#5560d6]">
               <Image
                 src="/logo.png"
                 alt="TAKO"
@@ -20,36 +21,36 @@ export function Navbar() {
                 priority
               />
             </div>
-            <span className="font-mono text-base font-bold tracking-tight text-white">
+            <span className="font-mono text-base font-bold tracking-tight text-[var(--foreground)]">
               TAKO
             </span>
-            <span className="rounded border border-[#5560d6]/30 bg-[#5560d6]/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-[#7980e0]">
+            <span className="rounded border border-[#5560d6]/30 bg-[#5560d6]/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-[#5560d6] dark:text-[#7980e0]">
               v0.1
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm text-[#939db8]">
+          <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--muted)]">
             <a
               href="#install"
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-[var(--foreground)]"
             >
               Install
             </a>
             <a
               href="#architecture"
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-[var(--foreground)]"
             >
               Architecture
             </a>
             <a
               href="#features"
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-[var(--foreground)]"
             >
               Features
             </a>
             <a
               href="#comparison"
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-[var(--foreground)]"
             >
               Why TAKO
             </a>
@@ -57,7 +58,7 @@ export function Navbar() {
               href="https://docs.gettako.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[#939db8] transition-colors hover:text-white"
+              className="inline-flex items-center gap-1 text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
             >
               Docs
               <ArrowUpRight size={13} weight="bold" />
@@ -65,12 +66,14 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <ThemeToggle />
+
           <a
             href="https://github.com/gettako/tako"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded border border-[#939db826] bg-[#141622] px-3 py-1.5 text-xs font-medium text-[#dee2e6] transition-colors hover:border-[#939db84d] hover:bg-[#1a1d2c]"
+            className="inline-flex items-center gap-2 rounded border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:border-[#5560d6]/40"
           >
             <GithubLogo size={16} weight="fill" />
             <span className="hidden sm:inline">GitHub</span>
@@ -78,7 +81,7 @@ export function Navbar() {
 
           <a
             href="#install"
-            className="inline-flex items-center gap-1.5 rounded bg-[#5560d6] px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#636ef0]"
+            className="inline-flex items-center gap-1.5 rounded bg-[#5560d6] px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#4f46e5]"
           >
             <Terminal size={14} weight="bold" />
             <span>Install</span>

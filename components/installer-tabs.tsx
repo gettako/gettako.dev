@@ -23,9 +23,9 @@ export function InstallerTabs() {
   };
 
   return (
-    <div className="w-full rounded-lg border border-[#939db826] bg-[#141622] p-1 sm:p-2">
+    <div className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] p-1 sm:p-2 transition-colors">
       {/* Tabs Header */}
-      <div className="flex items-center justify-between border-b border-[#939db81a] px-2 pb-2 pt-1">
+      <div className="flex items-center justify-between border-b border-[var(--border)] px-2 pb-2 pt-1">
         <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
@@ -33,15 +33,15 @@ export function InstallerTabs() {
               setActiveTab("plane");
               setCopied(false);
             }}
-            className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors ${
+            className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
               activeTab === "plane"
-                ? "bg-[#1a1d2c] text-white border border-[#939db833]"
-                : "text-[#939db8] hover:text-white"
+                ? "bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)]"
+                : "text-[var(--muted)] hover:text-[var(--foreground)]"
             }`}
           >
             <HardDrives size={14} weight={activeTab === "plane" ? "fill" : "regular"} />
             <span>Control Plane</span>
-            <span className="hidden sm:inline text-[10px] text-[#7980e0] font-normal">
+            <span className="hidden sm:inline text-[10px] text-[#5560d6] dark:text-[#7980e0] font-normal">
               (install.sh)
             </span>
           </button>
@@ -52,15 +52,15 @@ export function InstallerTabs() {
               setActiveTab("agent");
               setCopied(false);
             }}
-            className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors ${
+            className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
               activeTab === "agent"
-                ? "bg-[#1a1d2c] text-white border border-[#939db833]"
-                : "text-[#939db8] hover:text-white"
+                ? "bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)]"
+                : "text-[var(--muted)] hover:text-[var(--foreground)]"
             }`}
           >
             <Cpu size={14} weight={activeTab === "agent" ? "fill" : "regular"} />
             <span>Worker Agent</span>
-            <span className="hidden sm:inline text-[10px] text-[#7980e0] font-normal">
+            <span className="hidden sm:inline text-[10px] text-[#5560d6] dark:text-[#7980e0] font-normal">
               (agent.sh)
             </span>
           </button>
@@ -70,7 +70,7 @@ export function InstallerTabs() {
           href={activeTab === "plane" ? "/install.sh" : "/agent.sh"}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-[#939db8] hover:text-white transition-colors"
+          className="hidden sm:flex items-center gap-1 text-[11px] font-mono text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
         >
           <span>View raw script</span>
           <ArrowSquareOut size={12} />
@@ -78,9 +78,9 @@ export function InstallerTabs() {
       </div>
 
       {/* Code Box */}
-      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-[#0b0c14] border border-[#939db81a] px-3.5 py-3 font-mono">
-        <div className="flex items-center gap-2.5 overflow-x-auto text-xs sm:text-sm text-[#dee2e6] pr-2">
-          <span className="text-[#5560d6] select-none">$</span>
+      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-[var(--code-bg)] border border-[#939db826] px-3.5 py-3 font-mono text-white">
+        <div className="flex items-center gap-2.5 overflow-x-auto text-xs sm:text-sm text-slate-200 pr-2">
+          <span className="text-[#7980e0] select-none">$</span>
           <span className="whitespace-nowrap">{command}</span>
         </div>
 
@@ -88,7 +88,7 @@ export function InstallerTabs() {
           type="button"
           onClick={handleCopy}
           aria-label="Copy install command"
-          className="flex items-center justify-center gap-1.5 self-end sm:self-auto shrink-0 rounded border border-[#939db826] bg-[#1a1d2c] px-3 py-1.5 text-xs font-sans font-medium text-white transition-all hover:bg-[#5560d6] hover:border-[#5560d6]"
+          className="flex items-center justify-center gap-1.5 self-end sm:self-auto shrink-0 rounded border border-[#939db833] bg-[#1a1d2c] px-3 py-1.5 text-xs font-sans font-medium text-white transition-all hover:bg-[#5560d6] hover:border-[#5560d6] cursor-pointer"
         >
           {copied ? (
             <>
@@ -105,14 +105,14 @@ export function InstallerTabs() {
       </div>
 
       {/* Subtext description */}
-      <div className="mt-2.5 px-2 pb-1 text-[12px] text-[#939db8]">
+      <div className="mt-2.5 px-2 pb-1 text-[12px] text-[var(--muted)]">
         {activeTab === "plane" ? (
           <p>
-            Run on your <strong className="text-white">primary server</strong>. Sets up Next.js 16 Web Dashboard, Go REST API, gRPC coordinator, Traefik v3, and encrypted SQLite. Minimum 1 GB RAM, Ubuntu/Debian/Rocky/Alpine with Docker 24+.
+            Run on your <strong className="text-[var(--foreground)]">primary server</strong>. Sets up Next.js 16 Web Dashboard, Go REST API, gRPC coordinator, Traefik v3, and encrypted SQLite. Minimum 1 GB RAM, Ubuntu/Debian/Rocky/Alpine with Docker 24+.
           </p>
         ) : (
           <p>
-            Run on any <strong className="text-white">remote worker node</strong>. Installs the lightweight node daemon and Traefik reverse proxy. Connects outward to your control plane over TLS gRPC with <strong className="text-white">0 open inbound management ports</strong>.
+            Run on any <strong className="text-[var(--foreground)]">remote worker node</strong>. Installs the lightweight node daemon and Traefik reverse proxy. Connects outward to your control plane over TLS gRPC with <strong className="text-[var(--foreground)]">0 open inbound management ports</strong>.
           </p>
         )}
       </div>

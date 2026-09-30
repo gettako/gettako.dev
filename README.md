@@ -9,6 +9,12 @@ This repository hosts:
 2. **Control Plane Installer**: Served at `https://gettako.dev/install.sh`
 3. **Worker Agent Installer**: Served at `https://gettako.dev/agent.sh`
 
+## Features
+
+- **Typography**: `Plus Jakarta Sans` for clean, high-precision geometry and `JetBrains Mono` for developer code blocks and terminal previews.
+- **Theme**: Seamless Light and Dark mode with a responsive theme toggle and flat design (zero shadows).
+- **Static Export**: Generates static HTML (`output: 'export'`) optimized for global edge CDN hosting on Cloudflare Pages.
+
 ## Local Development
 
 ```bash
@@ -42,4 +48,4 @@ This compiles a fully static export in the `out/` directory, ready to deploy to 
 
 ## License
 
-MIT
+Apache License 2.0. See [LICENSE](LICENSE) for details.

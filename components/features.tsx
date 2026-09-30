@@ -64,16 +64,16 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="w-full py-16 sm:py-24 border-t border-[#939db81a]">
+    <section id="features" className="w-full py-16 sm:py-24 border-t border-[var(--border)] transition-colors">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#7980e0]">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
             Core Capabilities
           </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
             Everything you need for self-hosting. Nothing you don&apos;t.
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#939db8] leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
             Engineered specifically for personal workloads and small teams who want total infrastructure control without operational overhead.
           </p>
         </div>
@@ -84,16 +84,16 @@ export function Features() {
             return (
               <div
                 key={feat.title}
-                className="rounded-lg border border-[#939db826] bg-[#141622] p-5 flex flex-col justify-between transition-colors hover:border-[#939db84d]"
+                className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 flex flex-col justify-between transition-colors hover:border-[#5560d6]/50"
               >
                 <div>
-                  <div className="h-9 w-9 rounded border border-[#939db826] bg-[#0b0c14] flex items-center justify-center text-[#7980e0]">
+                  <div className="h-9 w-9 rounded border border-[var(--border)] bg-[var(--surface-2)] flex items-center justify-center text-[#5560d6] dark:text-[#7980e0]">
                     <Icon size={20} weight="regular" />
                   </div>
-                  <h3 className="mt-4 font-semibold text-sm text-white">
+                  <h3 className="mt-4 font-semibold text-sm text-[var(--foreground)]">
                     {feat.title}
                   </h3>
-                  <p className="mt-2 text-xs text-[#939db8] leading-relaxed">
+                  <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
                     {feat.description}
                   </p>
                 </div>

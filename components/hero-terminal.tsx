@@ -2,7 +2,7 @@
 
 export function HeroTerminal() {
   return (
-    <div className="w-full rounded-lg border border-[#939db826] bg-[#0b0c14] overflow-hidden text-left font-mono text-xs">
+    <div className="w-full rounded-lg border border-[var(--border)] bg-[#0b0c14] overflow-hidden text-left font-mono text-xs">
       {/* Terminal Title Bar */}
       <div className="flex items-center justify-between border-b border-[#939db81a] bg-[#141622] px-4 py-2.5">
         <div className="flex items-center gap-2">
@@ -15,7 +15,7 @@ export function HeroTerminal() {
       </div>
 
       {/* Terminal Output */}
-      <div className="p-4 sm:p-5 space-y-2 text-[#dee2e6] leading-relaxed overflow-x-auto">
+      <div className="p-4 sm:p-5 space-y-2 text-[#dee2e6] leading-relaxed overflow-x-auto bg-[#0b0c14]">
         <div>
           <span className="text-[#5560d6]">$</span> curl -fsSL https://gettako.dev/install.sh | bash
         </div>
