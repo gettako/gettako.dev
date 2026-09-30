@@ -11,7 +11,7 @@ This repository hosts:
 
 ## Features
 
-- **Typography**: `Plus Jakarta Sans` for clean, high-precision geometry and `JetBrains Mono` for developer code blocks and terminal previews.
+- **Typography**: `Plus Jakarta Sans` for geometric, high-craft UI headings and `Iosevka` for developer code blocks, terminal outputs, and paths.
 - **Theme**: Seamless Light and Dark mode with a responsive theme toggle and flat design (zero shadows).
 - **Static Export**: Generates static HTML (`output: 'export'`) optimized for global edge CDN hosting on Cloudflare Pages.
 

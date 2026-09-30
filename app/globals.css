@@ -4,10 +4,11 @@
 
 @theme {
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
+  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --background: #fafbfc;
   --foreground: #1e293b;
   --surface: #f1f5f9;
@@ -23,6 +24,7 @@
 }
 
 .dark {
+  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --background: #0b0c14;
   --foreground: #ffffff;
   --surface: #141622;
@@ -46,7 +48,7 @@ body {
 }
 
 code, kbd, samp, pre {
-  font-family: var(--font-mono), monospace;
+  font-family: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* Custom scrollbar */
