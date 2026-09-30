@@ -11,19 +11,24 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative h-8 w-8 overflow-hidden rounded border border-[var(--border)] bg-[var(--surface)] p-1 transition-colors group-hover:border-[#5560d6]">
+            <div className="relative h-8 flex items-center">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Tako"
-                width={32}
+                width={96}
                 height={32}
-                className="h-full w-full object-contain"
+                className="h-7 w-auto object-contain dark:hidden"
+                priority
+              />
+              <Image
+                src="/logo-dark.svg"
+                alt="Tako"
+                width={96}
+                height={32}
+                className="h-7 w-auto object-contain hidden dark:block"
                 priority
               />
             </div>
-            <span className="font-mono text-base font-bold tracking-tight text-[var(--foreground)]">
-              Tako
-            </span>
             <span className="rounded border border-[#5560d6]/30 bg-[#5560d6]/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-[#5560d6] dark:text-[#7980e0]">
               v0.1
             </span>

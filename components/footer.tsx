@@ -10,17 +10,23 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="h-7 w-7 rounded border border-[var(--border)] bg-[var(--surface)] p-1 flex items-center justify-center">
+            <div className="h-7 flex items-center">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Tako"
-                width={20}
-                height={20}
-                className="h-full w-full object-contain"
+                width={80}
+                height={26}
+                className="h-6 w-auto object-contain dark:hidden"
+              />
+              <Image
+                src="/logo-dark.svg"
+                alt="Tako"
+                width={80}
+                height={26}
+                className="h-6 w-auto object-contain hidden dark:block"
               />
             </div>
             <div>
-              <span className="font-mono font-bold text-[var(--foreground)] text-sm">Tako</span>
               <span className="text-[11px] text-[var(--muted)] ml-2">
                 Self-hosted platform for solo developers.
               </span>
