@@ -8,13 +8,13 @@ export function Comparison() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
-            The TAKO Philosophy
+            The Tako Philosophy
           </span>
           <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
             Deliberately simpler than Dokploy &amp; Coolify.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-            Most self-hosting tools evolve into complex multi-tenant platforms with app stores, heavy database clusters, and background workers. TAKO stays focused on deploying your code with minimal resource overhead.
+            Most self-hosting tools evolve into complex multi-tenant platforms with app stores, heavy database clusters, and background workers. Tako stays focused on deploying your code with minimal resource overhead.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export function Comparison() {
             <thead>
               <tr className="border-b border-[var(--border)] bg-[var(--surface-3)] font-mono text-xs text-[var(--muted)]">
                 <th className="py-3 px-4 sm:px-6 font-medium">Feature</th>
-                <th className="py-3 px-4 sm:px-6 font-semibold text-[#5560d6] dark:text-[#7980e0]">TAKO</th>
+                <th className="py-3 px-4 sm:px-6 font-semibold text-[#5560d6] dark:text-[#7980e0]">Tako</th>
                 <th className="py-3 px-4 sm:px-6 font-medium">Coolify</th>
                 <th className="py-3 px-4 sm:px-6 font-medium">Dokploy</th>
                 <th className="py-3 px-4 sm:px-6 font-medium">Kubernetes</th>

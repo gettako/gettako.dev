@@ -31,34 +31,34 @@ export function Architecture() {
                 <span className="font-mono text-[11px] text-[var(--muted)]">Port 3000 / 8080 / 50051</span>
               </div>
 
-              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">TAKO Control Plane</h3>
+              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">Tako Control Plane</h3>
               <p className="mt-1 text-xs text-[var(--muted)] leading-relaxed">
                 The single pane of glass for all your deployments, services, and worker nodes.
               </p>
 
               <div className="mt-6 space-y-3 font-mono text-xs">
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">Next.js 16 Web Console</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Base UI (`base-vega`), Tailwind CSS 4, zero shadows, flat theme design.
                   </div>
                 </div>
 
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">Go REST API &amp; SSE Streamer</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Real-time container logs, git webhook handlers, and deploy coordinator.
                   </div>
                 </div>
 
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">Encrypted SQLite DB (WAL Mode)</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Pure-Go SQLite engine with AES-256-GCM secret encryption at rest.
                   </div>
                 </div>
 
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">gRPC Coordinator (TLS)</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Bidirectional heartbeat and command dispatcher for connected worker agents.
@@ -103,27 +103,27 @@ export function Architecture() {
                 <span className="font-mono text-[11px] text-[var(--muted)]">Port 80 / 443 only</span>
               </div>
 
-              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">TAKO Node Agent &amp; Traefik</h3>
+              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">Tako Node Agent &amp; Traefik</h3>
               <p className="mt-1 text-xs text-[var(--muted)] leading-relaxed">
                 Lightweight worker daemon that executes builds and routes traffic to isolated containers.
               </p>
 
               <div className="mt-6 space-y-3 font-mono text-xs">
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
-                  <div className="font-semibold text-[var(--foreground)]">TAKO Agent Daemon (Go)</div>
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Tako Agent Daemon (Go)</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Docker Engine SDK coordinator, health check supervisor, build executor.
                   </div>
                 </div>
 
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">Traefik v3 Reverse Proxy</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Automated Let&apos;s Encrypt SSL certificates and zero-downtime traffic cutover.
                   </div>
                 </div>
 
-                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
                   <div className="font-semibold text-[var(--foreground)]">Application Containers</div>
                   <div className="text-[11px] text-[var(--muted)] mt-0.5">
                     Direct Dockerfile builds (Go, Node, Laravel, Rust, Python) with local image rollback retention.

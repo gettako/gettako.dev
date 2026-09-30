@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { ArrowLeft, BookOpen, Terminal, House } from "@phosphor-icons/react/dist/ssr";
+import { BookOpen, Terminal, House } from "@phosphor-icons/react/dist/ssr";
 
 export default function NotFound() {
   return (
@@ -26,12 +26,12 @@ export default function NotFound() {
             The path you requested does not exist on this cluster. It may have been stopped, moved, or never deployed.
           </p>
 
-          {/* Terminal Mockup */}
-          <div className="mt-8 rounded-lg border border-[var(--border)] bg-[#0b0c14] p-4 text-left font-mono text-xs text-slate-200">
-            <div className="text-[var(--muted)]">
-              <span className="text-[#e85347]">error:</span> route not recognized by reverse proxy
+          {/* Terminal Mockup: Light in light mode, Dark in dark mode */}
+          <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--terminal-body-bg)] p-4 text-left font-mono text-xs text-[var(--terminal-text)] transition-colors">
+            <div className="text-[var(--terminal-muted)]">
+              <span className="text-[#e85347] font-semibold">error:</span> route not recognized by reverse proxy
             </div>
-            <div className="text-slate-400 mt-1">
+            <div className="text-[var(--terminal-muted)] mt-1">
               traefik: 404 page not found — check domain routing rules
             </div>
           </div>

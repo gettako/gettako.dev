@@ -14,7 +14,7 @@ export function Navbar() {
             <div className="relative h-8 w-8 overflow-hidden rounded border border-[var(--border)] bg-[var(--surface)] p-1 transition-colors group-hover:border-[#5560d6]">
               <Image
                 src="/logo.png"
-                alt="TAKO"
+                alt="Tako"
                 width={32}
                 height={32}
                 className="h-full w-full object-contain"
@@ -22,7 +22,7 @@ export function Navbar() {
               />
             </div>
             <span className="font-mono text-base font-bold tracking-tight text-[var(--foreground)]">
-              TAKO
+              Tako
             </span>
             <span className="rounded border border-[#5560d6]/30 bg-[#5560d6]/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-[#5560d6] dark:text-[#7980e0]">
               v0.1
@@ -52,7 +52,7 @@ export function Navbar() {
               href="#comparison"
               className="transition-colors hover:text-[var(--foreground)]"
             >
-              Why TAKO
+              Why Tako
             </a>
             <a
               href="https://docs.gettako.dev"

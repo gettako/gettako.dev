@@ -13,14 +13,14 @@ export function Footer() {
             <div className="h-7 w-7 rounded border border-[var(--border)] bg-[var(--surface)] p-1 flex items-center justify-center">
               <Image
                 src="/logo.png"
-                alt="TAKO"
+                alt="Tako"
                 width={20}
                 height={20}
                 className="h-full w-full object-contain"
               />
             </div>
             <div>
-              <span className="font-mono font-bold text-[var(--foreground)] text-sm">TAKO</span>
+              <span className="font-mono font-bold text-[var(--foreground)] text-sm">Tako</span>
               <span className="text-[11px] text-[var(--muted)] ml-2">
                 Self-hosted platform for solo developers.
               </span>

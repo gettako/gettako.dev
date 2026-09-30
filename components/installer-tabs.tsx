@@ -77,10 +77,10 @@ export function InstallerTabs() {
         </a>
       </div>
 
-      {/* Code Box */}
-      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-[var(--code-bg)] border border-[#939db826] px-3.5 py-3 font-mono text-white">
-        <div className="flex items-center gap-2.5 overflow-x-auto text-xs sm:text-sm text-slate-200 pr-2">
-          <span className="text-[#7980e0] select-none">$</span>
+      {/* Code Box: Adapts to Light and Dark mode */}
+      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-[var(--code-bg)] border border-[var(--border)] px-3.5 py-3 font-mono transition-colors">
+        <div className="flex items-center gap-2.5 overflow-x-auto text-xs sm:text-sm text-[var(--foreground)] pr-2">
+          <span className="text-[#5560d6] dark:text-[#7980e0] select-none font-bold">$</span>
           <span className="whitespace-nowrap">{command}</span>
         </div>
 
@@ -88,12 +88,12 @@ export function InstallerTabs() {
           type="button"
           onClick={handleCopy}
           aria-label="Copy install command"
-          className="flex items-center justify-center gap-1.5 self-end sm:self-auto shrink-0 rounded border border-[#939db833] bg-[#1a1d2c] px-3 py-1.5 text-xs font-sans font-medium text-white transition-all hover:bg-[#5560d6] hover:border-[#5560d6] cursor-pointer"
+          className="flex items-center justify-center gap-1.5 self-end sm:self-auto shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:bg-[#5560d6] hover:text-white hover:border-[#5560d6] cursor-pointer"
         >
           {copied ? (
             <>
-              <Check size={14} weight="bold" className="text-emerald-400" />
-              <span className="text-emerald-400">Copied</span>
+              <Check size={14} weight="bold" className="text-emerald-600 dark:text-emerald-400" />
+              <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
             </>
           ) : (
             <>
