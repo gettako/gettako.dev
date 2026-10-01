@@ -18,9 +18,9 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center text-center">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#5560d6]/30 bg-[#5560d6]/10 px-3 py-1 text-xs font-mono font-medium text-[#5560d6] dark:text-[#7980e0]">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-                <span>Tako v0.1 • Self-Hosted Application Platform</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-600 dark:text-amber-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
+                <span>Heavy Development • Alpha Preview</span>
               </div>
 
               {/* Main Headline */}
@@ -56,8 +56,25 @@ export default function Home() {
                 </span>
               </div>
 
+              {/* Heavy Development Notice Banner */}
+              <div className="mt-8 w-full max-w-3xl rounded-lg border border-amber-500/30 bg-amber-500/10 p-3.5 sm:p-4 text-left">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500/20 font-mono text-[11px] font-bold text-amber-600 dark:text-amber-400">
+                    !
+                  </span>
+                  <div className="text-xs sm:text-sm text-[var(--foreground)]">
+                    <p className="font-semibold text-amber-600 dark:text-amber-400">
+                      Active Heavy Development
+                    </p>
+                    <p className="mt-0.5 text-xs text-[var(--muted)] leading-relaxed">
+                      Tako is currently in early alpha and undergoing rapid iteration. Features, APIs, and deployment scripts may change frequently. Expect bugs and breaking changes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Install Box Component */}
-              <div id="install" className="mt-10 w-full max-w-3xl lg:max-w-4xl">
+              <div id="install" className="mt-8 w-full max-w-3xl lg:max-w-4xl">
                 <InstallerTabs />
               </div>
             </div>

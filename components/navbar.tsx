@@ -29,8 +29,8 @@ export function Navbar() {
                 priority
               />
             </div>
-            <span className="rounded border border-[#5560d6]/30 bg-[#5560d6]/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-[#5560d6] dark:text-[#7980e0]">
-              v0.1
+            <span className="rounded border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-amber-600 dark:text-amber-400">
+              dev
             </span>
           </Link>
 
