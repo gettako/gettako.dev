@@ -15,7 +15,7 @@ export default function Home() {
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center text-center">
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 rounded-full border border-[#5560d6]/30 bg-[#5560d6]/10 px-3 py-1 text-xs font-mono font-medium text-[#5560d6] dark:text-[#7980e0]">
@@ -31,7 +31,7 @@ export default function Home() {
 
               {/* Subtitle */}
               <p className="mt-5 max-w-2xl text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-                A lightweight, single-operator personal alternative to Coolify and Dokploy. Run the control plane on one server, manage remote worker nodes over outbound TLS gRPC, and build directly from Dockerfiles.
+                A lightweight, resource-efficient self-hosted PaaS alternative to Coolify and Dokploy with multi-user support. Run the control plane on one server, manage remote worker nodes over outbound TLS gRPC, and build directly from Dockerfiles.
               </p>
 
               {/* Specs Pills */}
@@ -80,7 +80,7 @@ export default function Home() {
 
         {/* STEP BY STEP INSTALLATION GUIDE */}
         <section className="w-full py-16 sm:py-24 border-t border-[var(--border)] bg-[var(--surface)] transition-colors">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
                 Quick Setup
@@ -175,7 +175,7 @@ export default function Home() {
 
         {/* CALL TO ACTION BANNER */}
         <section className="w-full py-16 border-t border-[var(--border)] transition-colors">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-xl border border-[#5560d6]/30 bg-[var(--surface)] p-8 sm:p-12 text-center transition-colors">
               <h2 className="text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
                 Take complete ownership of your hosting infrastructure.

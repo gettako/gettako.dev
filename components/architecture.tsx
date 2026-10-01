@@ -5,13 +5,13 @@ import { ShieldCheck, ArrowsLeftRight, LockKey, TerminalWindow, PlugsConnected }
 export function Architecture() {
   return (
     <section id="architecture" className="w-full py-16 sm:py-24 border-t border-[var(--border)] transition-colors">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
             System Architecture
           </span>
           <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
-            Designed for simplicity. Built for single operators.
+            Designed for simplicity. Built for developers & teams.
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
             One central control plane orchestrates multiple remote worker nodes. No distributed consensus clusters, no Kubernetes overhead, and no complicated ingress overlays.

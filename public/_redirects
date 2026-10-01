@@ -1,4 +1,7 @@
+/install.sh     https://raw.githubusercontent.com/gettako/tako/main/deploy/install.sh   302
 /install        https://raw.githubusercontent.com/gettako/tako/main/deploy/install.sh   302
-/agent          https://raw.githubusercontent.com/gettako/tako/main/deploy/agent.sh     302
-/install-agent  https://raw.githubusercontent.com/gettako/tako/main/deploy/agent.sh     302
+/agent.sh       https://raw.githubusercontent.com/gettako/tako/main/deploy/install-agent.sh 302
+/agent          https://raw.githubusercontent.com/gettako/tako/main/deploy/install-agent.sh 302
+/install-agent.sh https://raw.githubusercontent.com/gettako/tako/main/deploy/install-agent.sh 302
+/install-agent  https://raw.githubusercontent.com/gettako/tako/main/deploy/install-agent.sh 302
 /docs           https://docs.gettako.dev                                                  302

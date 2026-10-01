@@ -65,7 +65,7 @@ const features = [
 export function Features() {
   return (
     <section id="features" className="w-full py-16 sm:py-24 border-t border-[var(--border)] transition-colors">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
             Core Capabilities
