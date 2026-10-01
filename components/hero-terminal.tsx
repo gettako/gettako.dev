@@ -38,8 +38,8 @@ export function HeroTerminal() {
         <div className="pl-4 text-[11px] text-[var(--terminal-muted)]">
           ✔ Container tako-traefik     <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Ports 80, 443)<br />
           ✔ Container tako-server      <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Port 8080, gRPC 50051)<br />
-          ✔ Container tako-web         <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Port 3000)<br />
-          ✔ Container tako-agent-local <span className="text-emerald-600 dark:text-emerald-400 font-medium">Connected</span>
+          ✔ Container tako-console         <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Port 3000)<br />
+          ✔ Container tako-agent <span className="text-emerald-600 dark:text-emerald-400 font-medium">Connected</span>
         </div>
         <div className="pt-2 text-emerald-600 dark:text-emerald-400 font-semibold">
           ================================================================<br />

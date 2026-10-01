@@ -10,7 +10,7 @@ export function InstallerTabs() {
   const command =
     activeTab === "plane"
       ? "curl -fsSL https://gettako.dev/install.sh | bash"
-      : "curl -fsSL https://gettako.dev/agent.sh | bash";
+      : 'curl -fsSL https://gettako.dev/agent.sh | bash';
 
   const handleCopy = async () => {
     try {
