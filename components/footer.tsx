@@ -74,7 +74,7 @@ export function Footer() {
             Released under the <span className="text-[var(--foreground)] font-semibold">Apache License 2.0</span>.
           </div>
           <div>
-            Built with Go 1.24, Next.js 16, Docker Engine, and Traefik v3.
+            Octopy ID
           </div>
         </div>
       </div>
