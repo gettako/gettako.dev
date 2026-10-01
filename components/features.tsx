@@ -87,13 +87,18 @@ export function Features() {
                 className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 flex flex-col justify-between transition-colors hover:border-[#5560d6]/50"
               >
                 <div>
-                  <div className="h-9 w-9 rounded border border-[var(--border)] bg-[var(--surface-2)] flex items-center justify-center text-[#5560d6] dark:text-[#7980e0]">
-                    <Icon size={20} weight="regular" />
+                  {/* Icon & Label aligned side-by-side */}
+                  <div className="flex items-center gap-3">
+                    <div className="h-9 w-9 shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] flex items-center justify-center text-[#5560d6] dark:text-[#7980e0]">
+                      <Icon size={20} weight="regular" />
+                    </div>
+                    <h3 className="font-semibold text-sm text-[var(--foreground)] leading-snug">
+                      {feat.title}
+                    </h3>
                   </div>
-                  <h3 className="mt-4 font-semibold text-sm text-[var(--foreground)]">
-                    {feat.title}
-                  </h3>
-                  <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
+
+                  {/* Full-width description */}
+                  <p className="mt-3.5 text-xs text-[var(--muted)] leading-relaxed w-full">
                     {feat.description}
                   </p>
                 </div>

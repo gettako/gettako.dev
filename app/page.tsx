@@ -24,13 +24,13 @@ export default function Home() {
               </div>
 
               {/* Main Headline */}
-              <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-4xl leading-[1.12]">
+              <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-5xl leading-[1.12]">
                 Deploy to your own servers on git push.{" "}
                 <span className="text-[#5560d6] dark:text-[#7980e0]">Zero bloat.</span>
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-5 max-w-2xl text-base sm:text-lg text-[var(--muted)] leading-relaxed">
+              <p className="mt-5 max-w-3xl text-base sm:text-lg text-[var(--muted)] leading-relaxed">
                 A lightweight, resource-efficient self-hosted PaaS alternative to Coolify and Dokploy with multi-user support. Run the control plane on one server, manage remote worker nodes over outbound TLS gRPC, and build directly from Dockerfiles.
               </p>
 
@@ -57,13 +57,13 @@ export default function Home() {
               </div>
 
               {/* Install Box Component */}
-              <div id="install" className="mt-10 w-full max-w-2xl">
+              <div id="install" className="mt-10 w-full max-w-3xl lg:max-w-4xl">
                 <InstallerTabs />
               </div>
             </div>
 
             {/* Interactive Terminal Output Showcase */}
-            <div className="mt-12 sm:mt-16 mx-auto max-w-3xl">
+            <div className="mt-12 sm:mt-16 mx-auto max-w-5xl">
               <HeroTerminal />
             </div>
           </div>
