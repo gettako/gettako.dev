@@ -229,7 +229,7 @@ export function Comparison() {
             <Info size={14} className="text-[#5560d6] dark:text-[#7980e0]" />
             <span>Benchmark Notes &amp; Disclaimers</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 pt-0.5 leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 pt-1 text-xs leading-relaxed">
             <div>
               <strong className="text-[var(--foreground)] block mb-0.5">Environment:</strong>
               Measured on identical clean VPS (2 vCPU AMD EPYC 9754, 8 GB RAM, Ubuntu 26.04, Docker 29). Baseline OS idle was 682 MiB RAM.
