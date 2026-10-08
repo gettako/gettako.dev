@@ -4,180 +4,200 @@
 
 @theme {
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-display), "Space Grotesk", "Inter", -apple-system, sans-serif;
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* REACH THEME — dark, neutral, precise. No ocean. The visual language is
-   "delivery": a glowing core (control plane) reaching out with gradient
-   arms, carrying crisp container boxes to server nodes. */
+/* TAKO v3 — "DELIVERY" identity. Dark, editorial, kinetic.
+   Rust-orange containers + indigo tentacle arms on near-black. */
 :root,
 .dark {
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-display), "Space Grotesk", "Inter", -apple-system, sans-serif;
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --background: #060a13;
-  --foreground: #eceff7;
-  --surface: #0a0f1d;
-  --surface-2: #0d1424;
-  --surface-3: #111a2e;
-  --muted: #939cb8;
-  --border: rgba(150, 165, 205, 0.13);
-  --border-strong: rgba(150, 165, 205, 0.26);
-  --primary: #7980e0;
-  --primary-light: #a5b4fc;
-  --card-bg: #0a0f1d;
-  --code-bg: rgba(0, 0, 0, 0.35);
-  --terminal-bar-bg: #0b1120;
-  --terminal-body-bg: rgba(3, 5, 12, 0.6);
-  --terminal-text: #dde3f3;
-  --terminal-muted: #939cb8;
-  --terminal-border: rgba(150, 165, 205, 0.15);
-  --reach-cyan: #22d3ee;
+
+  --ink: #f2f4fa;
+  --muted: #8a93b2;
+  --faint: #5b637f;
+  --line: rgba(160, 175, 215, 0.12);
+  --indigo: #7c83ff;
+  --indigo-deep: #4a52b8;
+  --cyan: #22d3ee;
+  --rust: #e8933f;
+  --rust-deep: #b25a1d;
+  --amber: #f5b54a;
+  --green: #34d399;
+  --bg: #05070c;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #060a13;
-  background-image:
-    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(121, 128, 224, 0.09) 0%, transparent 60%),
-    linear-gradient(180deg, #080d18 0%, #060a13 45%, #04070e 100%);
-  background-attachment: fixed;
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
+.font-display {
+  font-family: var(--font-display);
 }
 
 code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
-/* Gradient headline accent */
-.reach-glow-text {
-  background: linear-gradient(100deg, #c7d0ff 0%, #7980e0 55%, #22d3ee 100%);
+::selection {
+  background: #7c83ff;
+  color: #05070c;
+}
+
+/* ---------- signature treatments ---------- */
+
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker .n {
+  color: var(--indigo);
+}
+
+.glow-text {
+  background: linear-gradient(100deg, #dfe4ff 0%, #7c83ff 55%, #22d3ee 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Faint engineering grid backdrop */
-.reach-grid {
-  background-image:
-    linear-gradient(rgba(150, 165, 205, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(150, 165, 205, 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 30%, transparent 75%);
+.rust-text {
+  background: linear-gradient(100deg, #ffd9a3 0%, #e8933f 60%, #c96a24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* ---- keyframes ---- */
+/* faint engineering grid */
+.blueprint {
+  background-image:
+    linear-gradient(rgba(160, 175, 215, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160, 175, 215, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
 
-@keyframes tentacle-flow {
+/* ---------- keyframes ---------- */
+
+@keyframes flow-dash {
   to {
-    stroke-dashoffset: -36;
+    stroke-dashoffset: -40;
   }
 }
-.tentacle-flow {
-  animation: tentacle-flow 2.8s linear infinite;
+.flow {
+  animation: flow-dash 3s linear infinite;
 }
-.tentacle-flow-slow {
-  animation: tentacle-flow 4.5s linear infinite;
-}
-.tentacle-flow-fast {
-  animation: tentacle-flow 1.8s linear infinite;
+.flow-slow {
+  animation: flow-dash 5s linear infinite;
 }
 
-/* Container boxes riding the arms */
-@keyframes box-float {
+@keyframes floaty {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-9px);
+    transform: translateY(-10px);
   }
 }
-.reach-box {
-  animation: box-float 5.5s ease-in-out infinite;
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
 }
 
-/* Slow orbit ring around the core */
-@keyframes core-orbit {
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 28s linear infinite;
+}
+
+@keyframes orbit-spin {
   to {
     transform: rotate(360deg);
   }
 }
-.reach-orbit {
-  animation: core-orbit 24s linear infinite;
+.orbit {
+  animation: orbit-spin 26s linear infinite;
   transform-origin: center;
   transform-box: fill-box;
 }
 
-/* Core breathing glow */
-@keyframes core-breathe {
+@keyframes breathe {
   0%,
   100% {
-    opacity: 0.55;
+    opacity: 0.5;
   }
   50% {
     opacity: 1;
   }
 }
-.reach-core-glow {
-  animation: core-breathe 4s ease-in-out infinite;
+.breathe {
+  animation: breathe 4.5s ease-in-out infinite;
 }
 
-/* Pulsing status dots */
-@keyframes dot-ping {
+@keyframes ping-soft {
   0% {
     transform: scale(1);
     opacity: 0.9;
   }
   80%,
   100% {
-    transform: scale(2.6);
+    transform: scale(2.8);
     opacity: 0;
   }
 }
-.abyss-ping {
-  animation: dot-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+.ping-soft {
+  animation: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
   transform-origin: center;
   transform-box: fill-box;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tentacle-flow,
-  .tentacle-flow-slow,
-  .tentacle-flow-fast,
-  .reach-box,
-  .reach-orbit,
-  .reach-core-glow,
-  .abyss-ping {
+  .flow,
+  .flow-slow,
+  .floaty,
+  .marquee-track,
+  .orbit,
+  .breathe,
+  .ping-soft {
     animation: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #060a13;
+  background: #05070c;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(150, 165, 205, 0.25);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 165, 205, 0.45);
+  background: #232a42;
+  border-radius: 4px;
 }
