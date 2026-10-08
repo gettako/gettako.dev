@@ -75,6 +75,33 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
+/* Tentacle divider flow animations */
+@keyframes tentacle-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+.tentacle-flow {
+  animation: tentacle-flow 2.8s linear infinite;
+}
+
+.tentacle-flow-slow {
+  animation: tentacle-flow 4.5s linear infinite;
+}
+
+.tentacle-flow-fast {
+  animation: tentacle-flow 1.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tentacle-flow,
+  .tentacle-flow-slow,
+  .tentacle-flow-fast {
+    animation: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

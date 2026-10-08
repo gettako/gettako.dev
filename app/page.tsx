@@ -4,6 +4,11 @@ import { HeroTerminal } from "@/components/hero-terminal";
 import { Architecture } from "@/components/architecture";
 import { Features } from "@/components/features";
 import { Comparison } from "@/components/comparison";
+import { Roadmap } from "@/components/roadmap";
+import { Security } from "@/components/security";
+import { RamMeter } from "@/components/ram-meter";
+import { TentacleDivider } from "@/components/tentacle-divider";
+import { CopyButton } from "@/components/copy-button";
 import { Footer } from "@/components/footer";
 import { ArrowUpRight, CheckCircle, Terminal, Cpu } from "@phosphor-icons/react/dist/ssr";
 
@@ -17,14 +22,8 @@ export default function Home() {
         <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center text-center">
-              {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-600 dark:text-amber-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
-                <span>Heavy Development • Alpha Preview</span>
-              </div>
-
               {/* Main Headline */}
-              <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-5xl leading-[1.12]">
+              <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-5xl leading-[1.12]">
                 Deploy to your own servers on git push.{" "}
                 <span className="text-[#5560d6] dark:text-[#7980e0]">Zero bloat.</span>
               </h1>
@@ -86,6 +85,11 @@ export default function Home() {
           </div>
         </section>
 
+        {/* RAM METER — zero bloat, measured */}
+        <RamMeter />
+
+        <TentacleDivider />
+
         {/* ARCHITECTURE SECTION */}
         <Architecture />
 
@@ -94,6 +98,14 @@ export default function Home() {
 
         {/* COMPARISON / WHY TAKO */}
         <Comparison />
+
+        {/* SECURITY SPOTLIGHT */}
+        <Security />
+
+        <TentacleDivider flip />
+
+        {/* PUBLIC ROADMAP */}
+        <Roadmap />
 
         {/* STEP BY STEP INSTALLATION GUIDE */}
         <section className="w-full py-16 sm:py-24 border-t border-[var(--border)] bg-[var(--surface)] transition-colors">
@@ -129,8 +141,11 @@ export default function Home() {
                   <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
                     SSH into your primary Linux server and execute the automated setup script. It provisions Docker, initializes the database, and launches the dashboard.
                   </p>
-                  <div className="mt-4 rounded bg-[var(--code-bg)] border border-[var(--border)] p-3 font-mono text-xs text-[var(--foreground)] overflow-x-auto transition-colors">
-                    <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/install.sh | bash
+                  <div className="mt-4 flex items-center gap-2 rounded bg-[var(--code-bg)] border border-[var(--border)] p-2.5 pl-3 transition-colors">
+                    <div className="flex-1 min-w-0 overflow-x-auto font-mono text-xs text-[var(--foreground)] whitespace-nowrap">
+                      <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/install.sh | bash
+                    </div>
+                    <CopyButton text="curl -fsSL https://gettako.dev/install.sh | bash" />
                   </div>
                   <ul className="mt-4 space-y-1.5 text-xs text-[var(--muted)]">
                     <li className="flex items-center gap-2">
@@ -167,8 +182,11 @@ export default function Home() {
                   <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
                     Want to run applications on additional servers? Run the agent script on any remote VPS. It connects outward to your control plane with no open inbound ports.
                   </p>
-                  <div className="mt-4 rounded bg-[var(--code-bg)] border border-[var(--border)] p-3 font-mono text-xs text-[var(--foreground)] overflow-x-auto transition-colors">
-                    <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/agent.sh | bash
+                  <div className="mt-4 flex items-center gap-2 rounded bg-[var(--code-bg)] border border-[var(--border)] p-2.5 pl-3 transition-colors">
+                    <div className="flex-1 min-w-0 overflow-x-auto font-mono text-xs text-[var(--foreground)] whitespace-nowrap">
+                      <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/agent.sh | bash
+                    </div>
+                    <CopyButton text="curl -fsSL https://gettako.dev/agent.sh | bash" />
                   </div>
                   <ul className="mt-4 space-y-1.5 text-xs text-[var(--muted)]">
                     <li className="flex items-center gap-2">
@@ -190,32 +208,54 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CALL TO ACTION BANNER */}
+        {/* CALL TO ACTION / PRICING BANNER */}
         <section className="w-full py-16 border-t border-[var(--border)] transition-colors">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-xl border border-[#5560d6]/30 bg-[var(--surface)] p-8 sm:p-12 text-center transition-colors">
-              <h2 className="text-2xl sm:text-3xl font-bold text-[var(--foreground)]">
-                Take complete ownership of your hosting infrastructure.
-              </h2>
-              <p className="mt-3 max-w-xl mx-auto text-sm sm:text-base text-[var(--muted)]">
-                Open source, Apache 2.0 licensed, with no cloud lock-in or artificial upgrade paywalls.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href="#install"
-                  className="rounded bg-[#5560d6] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4f46e5]"
-                >
-                  Install Tako Now
-                </a>
-                <a
-                  href="https://docs.gettako.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-[var(--surface-2)] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[#5560d6]/50"
-                >
-                  <span>Explore Documentation</span>
-                  <ArrowUpRight size={15} weight="bold" />
-                </a>
+            <div className="rounded-xl border border-[#5560d6]/30 bg-[var(--surface)] p-8 sm:p-12 transition-colors">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
+                    Pricing
+                  </span>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[var(--foreground)]">$0</span>
+                    <span className="font-mono text-sm text-[var(--muted)]">/ forever</span>
+                  </div>
+                  <p className="mt-3 max-w-md text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+                    Take complete ownership of your hosting infrastructure. Open source under Apache 2.0 —
+                    no cloud lock-in, no seat limits, no artificial upgrade paywalls.
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <a
+                      href="#install"
+                      className="rounded bg-[#5560d6] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4f46e5]"
+                    >
+                      Install Tako Now
+                    </a>
+                    <a
+                      href="https://github.com/gettako/tako"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-[var(--surface-2)] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[#5560d6]/50"
+                    >
+                      <span>View Source</span>
+                      <ArrowUpRight size={15} weight="bold" />
+                    </a>
+                  </div>
+                </div>
+                <ul className="space-y-3 text-sm">
+                  {[
+                    "Every feature included — nothing held back",
+                    "Unlimited worker nodes on your own servers",
+                    "Unlimited team members, one shared team",
+                    "Self-hosted: your code never leaves your infrastructure",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-[var(--foreground)]">
+                      <CheckCircle size={18} weight="fill" className="mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-400" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

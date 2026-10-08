@@ -60,6 +60,18 @@ export function Navbar() {
               Why Tako
             </a>
             <a
+              href="#security"
+              className="transition-colors hover:text-[var(--foreground)]"
+            >
+              Security
+            </a>
+            <a
+              href="#roadmap"
+              className="transition-colors hover:text-[var(--foreground)]"
+            >
+              Roadmap
+            </a>
+            <a
               href="https://docs.gettako.dev"
               target="_blank"
               rel="noopener noreferrer"

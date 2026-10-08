@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, ArrowSquareOut, HardDrives, Cpu } from "@phosphor-icons/react";
+import { Check, Copy, DownloadSimple, ArrowSquareOut, HardDrives, Cpu } from "@phosphor-icons/react";
+
+const DISTROS = ["Ubuntu 22.04+", "Debian 12+", "Rocky 9+", "Alpine"];
 
 export function InstallerTabs() {
   const [activeTab, setActiveTab] = useState<"plane" | "agent">("plane");
@@ -84,24 +86,36 @@ export function InstallerTabs() {
           <span className="whitespace-nowrap">{command}</span>
         </div>
 
-        <button
-          type="button"
-          onClick={handleCopy}
-          aria-label="Copy install command"
-          className="flex items-center justify-center gap-1.5 self-end sm:self-auto shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:bg-[#5560d6] hover:text-white hover:border-[#5560d6] cursor-pointer"
-        >
-          {copied ? (
-            <>
-              <Check size={14} weight="bold" className="text-emerald-600 dark:text-emerald-400" />
-              <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
-            </>
-          ) : (
-            <>
-              <Copy size={14} />
-              <span>Copy</span>
-            </>
-          )}
-        </button>
+        <div className="flex items-center gap-2 self-end sm:self-auto">
+          <a
+            href={activeTab === "plane" ? "/install.sh" : "/agent.sh"}
+            download
+            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:border-[#5560d6] hover:text-[#5560d6] dark:hover:text-[#7980e0]"
+          >
+            <DownloadSimple size={14} />
+            <span className="hidden sm:inline">Download .sh</span>
+            <span className="sm:hidden">.sh</span>
+          </a>
+
+          <button
+            type="button"
+            onClick={handleCopy}
+            aria-label="Copy install command"
+            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:bg-[#5560d6] hover:text-white hover:border-[#5560d6] cursor-pointer"
+          >
+            {copied ? (
+              <>
+                <Check size={14} weight="bold" className="text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-600 dark:text-emerald-400">Copied</span>
+              </>
+            ) : (
+              <>
+                <Copy size={14} />
+                <span>Copy</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Subtext description */}
@@ -115,6 +129,14 @@ export function InstallerTabs() {
             Run on any <strong className="text-[var(--foreground)]">remote worker node</strong>. Installs the lightweight node daemon and Traefik reverse proxy. Connects outward to your control plane over TLS gRPC with <strong className="text-[var(--foreground)]">0 open inbound management ports</strong>.
           </p>
         )}
+        <div className="mt-2 flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
+          <span className="text-[var(--muted)]">Tested on:</span>
+          {DISTROS.map((d) => (
+            <span key={d} className="rounded border border-[var(--border)] bg-[var(--surface-2)] px-1.5 py-0.5 text-[var(--muted)]">
+              {d}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
