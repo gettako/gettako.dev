@@ -75,6 +75,37 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
+/* Animated deployment flow */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.animate-flow {
+  animation: flow-dash 1s linear infinite;
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-step-in {
+  animation: step-in 0.35s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flow,
+  .animate-step-in {
+    animation: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

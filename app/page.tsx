@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { InstallerTabs } from "@/components/installer-tabs";
 import { HeroTerminal } from "@/components/hero-terminal";
 import { Architecture } from "@/components/architecture";
+import { HowItWorks } from "@/components/how-it-works";
 import { Features } from "@/components/features";
 import { Comparison } from "@/components/comparison";
 import { Footer } from "@/components/footer";
@@ -71,6 +72,9 @@ export default function Home() {
 
         {/* ARCHITECTURE SECTION */}
         <Architecture />
+
+        {/* HOW IT WORKS / ANIMATED FLOW */}
+        <HowItWorks />
 
         {/* FEATURES GRID */}
         <Features />

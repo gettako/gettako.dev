@@ -48,6 +48,12 @@ export function Navbar() {
               Architecture
             </a>
             <a
+              href="#how-it-works"
+              className="transition-colors hover:text-[var(--foreground)]"
+            >
+              How it works
+            </a>
+            <a
               href="#features"
               className="transition-colors hover:text-[var(--foreground)]"
             >
