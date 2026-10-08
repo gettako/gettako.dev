@@ -1,145 +1,103 @@
+import Image from "next/image";
 import { SectionHead } from "@/components/ui";
-import { Box } from "@/components/box";
 import { LockKey, PlugsConnected, Package } from "@phosphor-icons/react/dist/ssr";
 
-const ARMS = [
-  "M196 244 C400 232 520 180 640 108",
-  "M196 260 C420 260 540 260 640 238",
-  "M196 276 C400 288 520 340 640 368",
-];
-
-const STACKS = [
-  { cy: 130, name: "srv-01", sub: "3 apps", boxes: ["api", "web"], delay: "0s" },
-  { cy: 260, name: "srv-02", sub: "2 apps", boxes: ["worker", "queue"], delay: "-1.8s" },
-  { cy: 390, name: "srv-03", sub: "2 apps", boxes: ["db", "cache"], delay: "-3.4s" },
-];
-
-function Scene() {
+function Diagram() {
   return (
-    <svg
-      viewBox="0 0 960 520"
-      className="h-auto w-full"
-      role="img"
-      aria-label="Tako core stacking containers onto servers"
-    >
+    <svg viewBox="0 0 900 420" className="h-auto w-full" role="img" aria-label="Tako the octopus connecting to servers">
       <defs>
-        <linearGradient id="axArm" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="diaArm" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#a5b4fc" />
-          <stop offset="100%" stopColor="#22d3ee" />
+          <stop offset="100%" stopColor="#5560d6" />
         </linearGradient>
-        <radialGradient id="axCore" cx="35%" cy="35%" r="80%">
-          <stop offset="0%" stopColor="#dfe4ff" />
-          <stop offset="55%" stopColor="#7c83ff" />
-          <stop offset="100%" stopColor="#4a52b8" />
-        </radialGradient>
-        <radialGradient id="axGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#7c83ff" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#7c83ff" stopOpacity="0" />
-        </radialGradient>
       </defs>
 
-      {/* arms */}
+      {/* connector arms */}
       <g fill="none" strokeLinecap="round">
-        {ARMS.map((d, i) => (
-          <g key={i}>
-            <path d={d} stroke="url(#axArm)" strokeWidth="9" strokeOpacity="0.28" />
-            <path
-              d={d}
-              stroke="#22d3ee"
-              strokeWidth="2"
-              strokeOpacity="0.7"
-              strokeDasharray="10 16"
-              className={i % 2 ? "flow-slow" : "flow"}
-            />
-          </g>
-        ))}
+        <path d="M270 150 C420 130 560 120 668 128" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
+        <path d="M270 150 C420 130 560 120 668 128" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
+        <path d="M275 210 C430 210 560 210 668 210" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
+        <path d="M275 210 C430 210 560 210 668 210" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
+        <path d="M270 270 C420 290 560 300 668 292" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
+        <path d="M270 270 C420 290 560 300 668 292" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
       </g>
 
-      <circle r="5" fill="#22d3ee" style={{ filter: "drop-shadow(0 0 6px rgba(34,211,238,.9))" }}>
-        <animateMotion dur="2.8s" repeatCount="indefinite" path={ARMS[0]} />
-      </circle>
-      <circle r="5" fill="#a5b4fc" style={{ filter: "drop-shadow(0 0 6px rgba(165,180,252,.9))" }}>
-        <animateMotion dur="2.8s" begin="-1.4s" repeatCount="indefinite" path={ARMS[2]} />
-      </circle>
-
-      {/* server stacks */}
-      {STACKS.map((s) => (
+      {/* server cards */}
+      {[
+        { y: 96, name: "srv-01", apps: "api · web" },
+        { y: 178, name: "srv-02", apps: "worker · queue" },
+        { y: 260, name: "srv-03", apps: "db · cache" },
+      ].map((s) => (
         <g key={s.name}>
-          <text x="730" y={s.cy - 78} textAnchor="middle" fill="#8a93b2" fontSize="12" fontFamily="Iosevka, monospace">
-            {s.name} · {s.sub}
+          <rect x="668" y={s.y} width="200" height="64" rx="14" fill="#fff" stroke="rgba(25,29,51,0.1)" />
+          <circle cx="694" cy={s.y + 24} r="5" fill="#22c55e" />
+          <text x="708" y={s.y + 28} fill="#191d33" fontSize="14" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif">
+            {s.name}
           </text>
-          <Box x={700} y={s.cy - 52} label={s.boxes[0]} delay={s.delay} />
-          <Box x={700} y={s.cy - 1} label={s.boxes[1]} delay={s.delay} />
-          <rect x="688" y={s.cy + 50} width="84" height="12" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(160,175,215,0.25)" />
+          <text x="694" y={s.y + 48} fill="#5d657f" fontSize="11" fontFamily="Iosevka, monospace">
+            {s.apps} · healthy
+          </text>
         </g>
       ))}
 
-      {/* core */}
-      <g transform="translate(170,260)">
-        <circle r="58" fill="url(#axGlow)" className="breathe" />
-        <circle r="26" fill="url(#axCore)" stroke="#dfe4ff" strokeWidth="2" />
-        <path
-          d="M0 -10 L0 10 M-7 -3 L0 -10 L7 -3"
-          stroke="#05070c"
-          strokeWidth="3.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </g>
-      <text x="170" y="348" textAnchor="middle" fill="#8a93b2" fontSize="11" fontFamily="Iosevka, monospace" letterSpacing="3">
-        CONTROL PLANE
+      <text x="784" y="360" textAnchor="middle" fill="#9aa1bd" fontSize="11" fontFamily="Iosevka, monospace">
+        outbound TLS gRPC · 0 inbound ports
       </text>
     </svg>
   );
 }
 
 const TRUTHS = [
-  {
-    icon: PlugsConnected,
-    title: "Outbound only",
-    copy: "Workers dial out over TLS gRPC. Zero inbound management ports — invisible to port scanners.",
-  },
-  {
-    icon: LockKey,
-    title: "Encrypted at rest",
-    copy: "Secrets live in embedded SQLite sealed with AES-256-GCM. No Postgres to babysit.",
-  },
-  {
-    icon: Package,
-    title: "Four containers",
-    copy: "Go, web console, Traefik. That's the whole platform. Fewer parts, fewer CVEs.",
-  },
+  { icon: PlugsConnected, title: "Outbound only", copy: "Workers dial out. Zero inbound management ports — invisible to port scanners." },
+  { icon: LockKey, title: "Encrypted at rest", copy: "Secrets sealed in SQLite with AES-256-GCM. No Postgres to babysit." },
+  { icon: Package, title: "Four containers", copy: "Go, web console, Traefik. Fewer moving parts, fewer CVEs to chase." },
 ];
 
 export function Architecture() {
   return (
-    <section id="architecture" className="relative border-b border-white/[0.07]">
+    <section id="architecture" className="border-b border-[var(--line)]">
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
         <SectionHead
           n="03"
           kicker="Architecture"
           title={
             <>
-              One core.
+              One Tako.
               <br />
-              <span className="text-[#5b637f]">Every server within reach.</span>
+              <span className="text-[var(--faint)]">Every server within reach.</span>
             </>
           }
-          lede="No consensus clusters, no Kubernetes overhead, no ingress overlays. The core builds your Dockerfile and stacks the containers where they belong."
+          lede="Yes — that's the actual Tako, drawn by a human, running your infrastructure. One control plane orchestrates every node. No consensus clusters, no Kubernetes overhead."
         />
 
-        <div className="blueprint mt-12 rounded-2xl border border-white/[0.08] bg-white/[0.015] p-4 sm:p-8">
-          <Scene />
+        <div className="mt-12 grid items-center gap-8 rounded-[2rem] border border-[#5560d6]/15 bg-gradient-to-br from-[var(--wash)] to-white p-6 sm:p-10 lg:grid-cols-12">
+          <div className="text-center lg:col-span-4">
+            <Image
+              src="/tako-mark.png"
+              alt="Tako control plane"
+              width={512}
+              height={512}
+              className="wiggle mx-auto w-40 sm:w-48"
+            />
+            <p className="mt-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#5560d6]">
+              Control plane
+            </p>
+            <p className="mt-1 font-mono text-[11px] text-[var(--faint)]">dashboard · api · grpc</p>
+          </div>
+          <div className="lg:col-span-8">
+            <Diagram />
+          </div>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           {TRUTHS.map((t) => (
-            <div key={t.title} className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-              <t.icon size={22} className="mt-0.5 shrink-0 text-[#7c83ff]" />
+            <div key={t.title} className="flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--wash)]">
+                <t.icon size={20} className="text-[#5560d6]" />
+              </span>
               <div>
-                <h3 className="font-display text-base font-bold text-[#f2f4fa]">{t.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-[#8a93b2]">{t.copy}</p>
+                <h3 className="font-display text-[15px] font-bold text-[var(--ink)]">{t.title}</h3>
+                <p className="mt-1 text-[13px] leading-relaxed text-[var(--muted)]">{t.copy}</p>
               </div>
             </div>
           ))}

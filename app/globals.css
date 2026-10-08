@@ -1,33 +1,29 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-display), "Space Grotesk", "Inter", -apple-system, sans-serif;
+  --font-display: var(--font-display), "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* TAKO v3 — "DELIVERY" identity. Dark, editorial, kinetic.
-   Rust-orange containers + indigo tentacle arms on near-black. */
-:root,
-.dark {
+/* FRIENDLY INDIGO — the user's own brand: their octopus, their #5560d6.
+   Light, clean, expressive. Generous whitespace, oversized type,
+   playful indigo decorations echoing the logo's bubbles and waves. */
+:root {
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-display), "Space Grotesk", "Inter", -apple-system, sans-serif;
+  --font-display: var(--font-display), "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  --ink: #f2f4fa;
-  --muted: #8a93b2;
-  --faint: #5b637f;
-  --line: rgba(160, 175, 215, 0.12);
-  --indigo: #7c83ff;
-  --indigo-deep: #4a52b8;
-  --cyan: #22d3ee;
-  --rust: #e8933f;
-  --rust-deep: #b25a1d;
-  --amber: #f5b54a;
-  --green: #34d399;
-  --bg: #05070c;
+  --paper: #fcfcff;
+  --ink: #191d33;
+  --muted: #5d657f;
+  --faint: #9aa1bd;
+  --line: rgba(25, 29, 51, 0.09);
+  --indigo: #5560d6;
+  --indigo-deep: #3f45b8;
+  --indigo-ink: #2f358f;
+  --wash: #eef0ff;
+  --wash-deep: #e2e6fd;
 }
 
 html {
@@ -35,7 +31,7 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -51,24 +47,22 @@ code, kbd, samp, pre {
 }
 
 ::selection {
-  background: #7c83ff;
-  color: #05070c;
+  background: #5560d6;
+  color: #fff;
 }
-
-/* ---------- signature treatments ---------- */
 
 .display-xl {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
 }
 
 .kicker {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -77,29 +71,52 @@ code, kbd, samp, pre {
   color: var(--indigo);
 }
 
-.glow-text {
-  background: linear-gradient(100deg, #dfe4ff 0%, #7c83ff 55%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.rust-text {
-  background: linear-gradient(100deg, #ffd9a3 0%, #e8933f 60%, #c96a24 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* faint engineering grid */
-.blueprint {
-  background-image:
-    linear-gradient(rgba(160, 175, 215, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(160, 175, 215, 0.055) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* dotted paper texture */
+.dotgrid {
+  background-image: radial-gradient(rgba(85, 96, 214, 0.14) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
 }
 
 /* ---------- keyframes ---------- */
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.2deg);
+  }
+}
+.floaty {
+  animation: floaty 6.5s ease-in-out infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-70px);
+    opacity: 0;
+  }
+}
+.bubble {
+  animation: bubble-rise 5s ease-in infinite;
+}
+
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 26s linear infinite;
+}
 
 @keyframes flow-dash {
   to {
@@ -109,81 +126,27 @@ code, kbd, samp, pre {
 .flow {
   animation: flow-dash 3s linear infinite;
 }
-.flow-slow {
-  animation: flow-dash 5s linear infinite;
-}
 
-@keyframes floaty {
+@keyframes wiggle {
   0%,
   100% {
-    transform: translateY(0);
+    transform: rotate(-4deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: rotate(4deg);
   }
 }
-.floaty {
-  animation: floaty 6s ease-in-out infinite;
-}
-
-@keyframes marquee-x {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee-x 28s linear infinite;
-}
-
-@keyframes orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.orbit {
-  animation: orbit-spin 26s linear infinite;
+.wiggle {
+  animation: wiggle 5s ease-in-out infinite;
   transform-origin: center;
-  transform-box: fill-box;
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-.breathe {
-  animation: breathe 4.5s ease-in-out infinite;
-}
-
-@keyframes ping-soft {
-  0% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  80%,
-  100% {
-    transform: scale(2.8);
-    opacity: 0;
-  }
-}
-.ping-soft {
-  animation: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
-  transform-origin: center;
-  transform-box: fill-box;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flow,
-  .flow-slow,
   .floaty,
+  .bubble,
   .marquee-track,
-  .orbit,
-  .breathe,
-  .ping-soft {
+  .flow,
+  .wiggle {
     animation: none;
   }
   html {
@@ -192,12 +155,16 @@ code, kbd, samp, pre {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070c;
+  background: #fcfcff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232a42;
-  border-radius: 4px;
+  background: #c9cef0;
+  border-radius: 6px;
+  border: 2px solid #fcfcff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5560d6;
 }

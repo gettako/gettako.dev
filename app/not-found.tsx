@@ -1,32 +1,31 @@
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { BookOpen, House } from "@phosphor-icons/react/dist/ssr";
+import { House, BookOpen } from "@phosphor-icons/react/dist/ssr";
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#05070c] text-[#f2f4fa]">
+    <div className="flex min-h-screen flex-col bg-[#fcfcff] text-[var(--ink)]">
       <Nav />
-
       <main className="flex flex-1 items-center justify-center px-4 py-32 sm:px-6">
         <div className="mx-auto max-w-xl text-center">
           <p className="kicker">
             <span className="n">404</span>
-            <span className="mx-3 text-[#3a4159]">/</span>
-            Container not found
+            <span className="mx-3 opacity-40">/</span>
+            Not found
           </p>
-          <h1 className="display-xl mt-6 text-5xl text-[#f2f4fa] sm:text-7xl">
-            Lost
+          <h1 className="display-xl mt-6 text-6xl sm:text-7xl">
+            Hmm,
             <br />
-            <span className="text-[#3f4663]">at sea.</span>
+            <span className="text-[#5560d6]">nothing here.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-[#8a93b2] sm:text-base">
-            This route was never deployed — or it sank. Head back to the surface.
+          <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
+            This route was never deployed. Let's get you back to the surface.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 rounded-md bg-[#7c83ff] px-4 py-2 text-sm font-semibold text-[#05070c] transition-colors hover:bg-[#a5b4fc]"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#5560d6] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#3f45b8]"
             >
               <House size={15} weight="bold" />
               Back to home
@@ -35,7 +34,7 @@ export default function NotFound() {
               href="https://docs.gettako.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-white/10 px-4 py-2 text-sm text-[#c6cde4] transition-colors hover:border-white/30 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[#5560d6]/50"
             >
               <BookOpen size={15} />
               Documentation
@@ -43,7 +42,6 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

@@ -11,48 +11,36 @@ import {
 const CARDS = [
   {
     icon: GitBranch,
-    accent: "text-[#7c83ff]",
-    ring: "hover:border-[#7c83ff]/45",
     span: "md:col-span-2",
     title: "Dockerfile-driven builds",
-    copy: "No opaque buildpacks. Tako builds straight from your repo's Dockerfile — the same artifact locally and in production. Full transparency, zero magic, reproducible everywhere.",
+    copy: "No opaque buildpacks. Tako builds straight from your repo's Dockerfile — the same artifact locally and in production. Reproducible everywhere, magic nowhere.",
   },
   {
     icon: ArrowsCounterClockwise,
-    accent: "text-[#e8933f]",
-    ring: "hover:border-[#e8933f]/45",
     span: "",
     title: "Zero-downtime rollouts",
-    copy: "Traefik cuts traffic only after health checks pass. Old containers drain gracefully.",
+    copy: "Traffic cuts over only after health checks pass. Old containers drain gracefully.",
   },
   {
     icon: Certificate,
-    accent: "text-[#22d3ee]",
-    ring: "hover:border-[#22d3ee]/45",
     span: "",
     title: "Automatic TLS",
-    copy: "Let's Encrypt certificates provisioned and renewed per domain. You never think about it.",
+    copy: "Let's Encrypt certificates, provisioned and renewed per domain. You never think about it.",
   },
   {
     icon: LockKey,
-    accent: "text-[#f5b54a]",
-    ring: "hover:border-[#f5b54a]/45",
     span: "",
     title: "Encrypted secrets",
-    copy: "Env vars and build secrets sealed with AES-256-GCM. Build args and runtime secrets stay separated.",
+    copy: "Env vars sealed with AES-256-GCM. Build args and runtime secrets stay separated.",
   },
   {
     icon: Broadcast,
-    accent: "text-[#34d399]",
-    ring: "hover:border-[#34d399]/45",
     span: "md:col-span-2",
     title: "Live logs, tidy disks",
-    copy: "Build and container logs stream to your browser over SSE — pause, search, follow. Meanwhile Tako quietly prunes dangling images and stale caches so your VPS never chokes on its own success. Instant rollback to any retained image included.",
+    copy: "Build and container logs stream to your browser — pause, search, follow. Meanwhile Tako quietly prunes dangling images and stale caches so your VPS never chokes on its own success.",
   },
   {
     icon: Trash,
-    accent: "text-[#8a93b2]",
-    ring: "hover:border-white/25",
     span: "",
     title: "Instant rollback",
     copy: "Previous images stay on the node. One click back to the last good release.",
@@ -61,7 +49,7 @@ const CARDS = [
 
 export function Bento() {
   return (
-    <section id="features" className="relative border-b border-white/[0.07]">
+    <section id="features" className="border-b border-[var(--line)] bg-white">
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
         <SectionHead
           n="04"
@@ -70,20 +58,21 @@ export function Bento() {
             <>
               Everything you need.
               <br />
-              <span className="text-[#5b637f]">Nothing you don't.</span>
+              <span className="text-[var(--faint)]">Nothing you don't.</span>
             </>
           }
         />
-
         <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {CARDS.map((c) => (
             <article
               key={c.title}
-              className={`rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6 transition-colors sm:p-7 ${c.span} ${c.ring}`}
+              className={`group rounded-3xl border border-[var(--line)] bg-[#fcfcff] p-7 transition-all hover:-translate-y-1 hover:border-[#5560d6]/40 hover:shadow-[0_20px_50px_rgba(85,96,214,0.12)] ${c.span}`}
             >
-              <c.icon size={26} weight="regular" className={c.accent} />
-              <h3 className="font-display mt-4 text-xl font-bold text-[#f2f4fa]">{c.title}</h3>
-              <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-[#8a93b2]">{c.copy}</p>
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--wash)] transition-colors group-hover:bg-[#5560d6]">
+                <c.icon size={22} weight="regular" className="text-[#5560d6] transition-colors group-hover:text-white" />
+              </span>
+              <h3 className="font-display mt-5 text-xl font-bold text-[var(--ink)]">{c.title}</h3>
+              <p className="mt-2.5 max-w-xl text-[14.5px] leading-relaxed text-[var(--muted)]">{c.copy}</p>
             </article>
           ))}
         </div>
