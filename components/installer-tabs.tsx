@@ -25,7 +25,7 @@ export function InstallerTabs() {
   };
 
   return (
-    <div className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] p-1 sm:p-2 transition-colors">
+    <div className="w-full rounded-lg border border-[var(--border)] bg-white/[0.025] p-1 sm:p-2 transition-colors">
       {/* Tabs Header */}
       <div className="flex items-center justify-between border-b border-[var(--border)] px-2 pb-2 pt-1">
         <div className="flex items-center gap-1.5 sm:gap-2">
@@ -37,7 +37,7 @@ export function InstallerTabs() {
             }}
             className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
               activeTab === "plane"
-                ? "bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)]"
+                ? "bg-white/[0.05] text-[var(--foreground)] border border-[var(--border)]"
                 : "text-[var(--muted)] hover:text-[var(--foreground)]"
             }`}
           >
@@ -56,7 +56,7 @@ export function InstallerTabs() {
             }}
             className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-mono font-medium transition-colors cursor-pointer ${
               activeTab === "agent"
-                ? "bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)]"
+                ? "bg-white/[0.05] text-[var(--foreground)] border border-[var(--border)]"
                 : "text-[var(--muted)] hover:text-[var(--foreground)]"
             }`}
           >
@@ -80,7 +80,7 @@ export function InstallerTabs() {
       </div>
 
       {/* Code Box: Adapts to Light and Dark mode */}
-      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-[var(--code-bg)] border border-[var(--border)] px-3.5 py-3 font-mono transition-colors">
+      <div className="mt-2 relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded bg-black/30 border border-[var(--border)] px-3.5 py-3 font-mono transition-colors">
         <div className="flex items-center gap-2.5 overflow-x-auto text-xs sm:text-sm text-[var(--foreground)] pr-2">
           <span className="text-[#5560d6] dark:text-[#7980e0] select-none font-bold">$</span>
           <span className="whitespace-nowrap">{command}</span>
@@ -90,7 +90,7 @@ export function InstallerTabs() {
           <a
             href={activeTab === "plane" ? "/install.sh" : "/agent.sh"}
             download
-            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:border-[#5560d6] hover:text-[#5560d6] dark:hover:text-[#7980e0]"
+            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-white/[0.05] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:border-[#5560d6] hover:text-[#5560d6] dark:hover:text-[#7980e0]"
           >
             <DownloadSimple size={14} />
             <span className="hidden sm:inline">Download .sh</span>
@@ -101,7 +101,7 @@ export function InstallerTabs() {
             type="button"
             onClick={handleCopy}
             aria-label="Copy install command"
-            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:bg-[#5560d6] hover:text-white hover:border-[#5560d6] cursor-pointer"
+            className="flex items-center justify-center gap-1.5 shrink-0 rounded border border-[var(--border)] bg-white/[0.05] px-3 py-1.5 text-xs font-sans font-medium text-[var(--foreground)] transition-all hover:bg-[#5560d6] hover:text-white hover:border-[#5560d6] cursor-pointer"
           >
             {copied ? (
               <>
@@ -132,7 +132,7 @@ export function InstallerTabs() {
         <div className="mt-2 flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
           <span className="text-[var(--muted)]">Tested on:</span>
           {DISTROS.map((d) => (
-            <span key={d} className="rounded border border-[var(--border)] bg-[var(--surface-2)] px-1.5 py-0.5 text-[var(--muted)]">
+            <span key={d} className="rounded border border-[var(--border)] bg-white/[0.05] px-1.5 py-0.5 text-[var(--muted)]">
               {d}
             </span>
           ))}

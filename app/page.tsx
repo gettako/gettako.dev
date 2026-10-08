@@ -1,97 +1,56 @@
 import { Navbar } from "@/components/navbar";
-import { InstallerTabs } from "@/components/installer-tabs";
-import { HeroTerminal } from "@/components/hero-terminal";
-import { Architecture } from "@/components/architecture";
-import { Features } from "@/components/features";
-import { Comparison } from "@/components/comparison";
-import { Roadmap } from "@/components/roadmap";
-import { Security } from "@/components/security";
+import { AbyssHero } from "@/components/abyss/abyss-hero";
+import { MarineSnow } from "@/components/abyss/marine-snow";
+import { DepthMeter } from "@/components/abyss/depth-meter";
+import { OctopusArchitecture } from "@/components/abyss/octopus-architecture";
 import { RamMeter } from "@/components/ram-meter";
 import { TentacleDivider } from "@/components/tentacle-divider";
 import { CopyButton } from "@/components/copy-button";
+import { Features } from "@/components/features";
+import { Comparison } from "@/components/comparison";
+import { Security } from "@/components/security";
+import { Roadmap } from "@/components/roadmap";
 import { Footer } from "@/components/footer";
 import { ArrowUpRight, CheckCircle, Terminal, Cpu } from "@phosphor-icons/react/dist/ssr";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors">
+    <div className="relative flex min-h-screen flex-col text-[var(--foreground)]">
+      <MarineSnow />
+      <DepthMeter />
       <Navbar />
 
-      <main className="flex-1">
-        {/* HERO SECTION */}
-        <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center text-center">
-              {/* Main Headline */}
-              <h1 className="mt-2 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-5xl leading-[1.12]">
-                Deploy to your own servers on git push.{" "}
-                <span className="text-[#5560d6] dark:text-[#7980e0]">Zero bloat.</span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="mt-5 max-w-3xl text-base sm:text-lg text-[var(--muted)] leading-relaxed">
-                A lightweight, resource-efficient self-hosted PaaS alternative to Coolify and Dokploy with multi-user support. Run the control plane on one server, manage remote worker nodes over outbound TLS gRPC, and build directly from Dockerfiles.
-              </p>
-
-              {/* Specs Pills */}
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] text-[var(--muted)]">
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
-                  Go 1.24+
-                </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
-                  Next.js 16
-                </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
-                  Docker 24+
-                </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
-                  Traefik v3
-                </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
-                  SQLite AES-256-GCM
-                </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1 text-[#5560d6] dark:text-[#7980e0] font-semibold">
-                  Apache 2.0
-                </span>
-              </div>
-
-              {/* Heavy Development Notice Banner */}
-              <div className="mt-8 w-full max-w-3xl rounded-lg border border-amber-500/30 bg-amber-500/10 p-3.5 sm:p-4 text-left">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500/20 font-mono text-[11px] font-bold text-amber-600 dark:text-amber-400">
-                    !
-                  </span>
-                  <div className="text-xs sm:text-sm text-[var(--foreground)]">
-                    <p className="font-semibold text-amber-600 dark:text-amber-400">
-                      Active Heavy Development
-                    </p>
-                    <p className="mt-0.5 text-xs text-[var(--muted)] leading-relaxed">
-                      Tako is currently in early alpha and undergoing rapid iteration. Features, APIs, and deployment scripts may change frequently. Expect bugs and breaking changes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Install Box Component */}
-              <div id="install" className="mt-8 w-full max-w-3xl lg:max-w-4xl">
-                <InstallerTabs />
-              </div>
-            </div>
-
-            {/* Interactive Terminal Output Showcase */}
-            <div className="mt-12 sm:mt-16 mx-auto max-w-5xl">
-              <HeroTerminal />
-            </div>
-          </div>
-        </section>
-
-        {/* RAM METER — zero bloat, measured */}
-        <RamMeter />
+      <main className="relative z-10 flex-1">
+        {/* HERO — the octopus surfaces */}
+        <AbyssHero />
 
         <TentacleDivider />
 
-        {/* ARCHITECTURE SECTION */}
-        <Architecture />
+        {/* PRESSURE GAUGE — zero bloat, measured */}
+        <RamMeter />
+
+        {/* ARCHITECTURE — one head, tentacles everywhere */}
+        <section id="architecture" className="w-full py-16 sm:py-24 border-t border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#7980e0]">
+                System Architecture
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
+                One head. Tentacles everywhere.
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+                The control plane is the octopus head — a single pane of glass for deployments,
+                services, and nodes. Every tentacle is an outbound TLS gRPC stream to a worker.
+                No consensus clusters, no Kubernetes overhead, no ingress overlays.
+              </p>
+            </div>
+
+            <OctopusArchitecture />
+          </div>
+        </section>
+
+        <TentacleDivider flip />
 
         {/* FEATURES GRID */}
         <Features />
@@ -102,16 +61,14 @@ export default function Home() {
         {/* SECURITY SPOTLIGHT */}
         <Security />
 
-        <TentacleDivider flip />
-
         {/* PUBLIC ROADMAP */}
         <Roadmap />
 
         {/* STEP BY STEP INSTALLATION GUIDE */}
-        <section className="w-full py-16 sm:py-24 border-t border-[var(--border)] bg-[var(--surface)] transition-colors">
+        <section className="w-full py-16 sm:py-24 border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#7980e0]">
                 Quick Setup
               </span>
               <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
@@ -124,13 +81,13 @@ export default function Home() {
 
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Step 1 Card */}
-              <div className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-6 flex flex-col justify-between transition-colors">
+              <div className="rounded-lg border border-[var(--border)] bg-white/[0.03] p-6 flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-[#5560d6] dark:text-[#7980e0]">
+                    <span className="font-mono text-xs font-semibold text-[#7980e0]">
                       STEP 01
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-[#5560d6]/10 px-2 py-0.5 text-[11px] font-mono text-[#5560d6] dark:text-[#7980e0]">
+                    <span className="inline-flex items-center gap-1 rounded bg-[#7980e0]/10 px-2 py-0.5 text-[11px] font-mono text-[#a5b4fc]">
                       <Terminal size={12} />
                       Primary Server
                     </span>
@@ -141,23 +98,23 @@ export default function Home() {
                   <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
                     SSH into your primary Linux server and execute the automated setup script. It provisions Docker, initializes the database, and launches the dashboard.
                   </p>
-                  <div className="mt-4 flex items-center gap-2 rounded bg-[var(--code-bg)] border border-[var(--border)] p-2.5 pl-3 transition-colors">
+                  <div className="mt-4 flex items-center gap-2 rounded bg-black/30 border border-[var(--border)] p-2.5 pl-3">
                     <div className="flex-1 min-w-0 overflow-x-auto font-mono text-xs text-[var(--foreground)] whitespace-nowrap">
-                      <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/install.sh | bash
+                      <span className="text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/install.sh | bash
                     </div>
                     <CopyButton text="curl -fsSL https://gettako.dev/install.sh | bash" />
                   </div>
                   <ul className="mt-4 space-y-1.5 text-xs text-[var(--muted)]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Starts Web Dashboard on port 3000</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Starts Go orchestrator and gRPC coordinator</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Generates AES-256-GCM encryption key &amp; one-time credentials</span>
                     </li>
                   </ul>
@@ -165,13 +122,13 @@ export default function Home() {
               </div>
 
               {/* Step 2 Card */}
-              <div className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-6 flex flex-col justify-between transition-colors">
+              <div className="rounded-lg border border-[var(--border)] bg-white/[0.03] p-6 flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="font-mono text-xs font-semibold text-emerald-400">
                       STEP 02 (Optional)
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded bg-emerald-500/10 px-2 py-0.5 text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
+                    <span className="inline-flex items-center gap-1 rounded bg-emerald-500/10 px-2 py-0.5 text-[11px] font-mono text-emerald-400">
                       <Cpu size={12} />
                       Remote Nodes
                     </span>
@@ -182,23 +139,23 @@ export default function Home() {
                   <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
                     Want to run applications on additional servers? Run the agent script on any remote VPS. It connects outward to your control plane with no open inbound ports.
                   </p>
-                  <div className="mt-4 flex items-center gap-2 rounded bg-[var(--code-bg)] border border-[var(--border)] p-2.5 pl-3 transition-colors">
+                  <div className="mt-4 flex items-center gap-2 rounded bg-black/30 border border-[var(--border)] p-2.5 pl-3">
                     <div className="flex-1 min-w-0 overflow-x-auto font-mono text-xs text-[var(--foreground)] whitespace-nowrap">
-                      <span className="text-[#5560d6] dark:text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/agent.sh | bash
+                      <span className="text-[#7980e0] font-bold select-none">$</span> curl -fsSL https://gettako.dev/agent.sh | bash
                     </div>
                     <CopyButton text="curl -fsSL https://gettako.dev/agent.sh | bash" />
                   </div>
                   <ul className="mt-4 space-y-1.5 text-xs text-[var(--muted)]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Prompts for your control plane URL and enrollment token</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Starts Traefik v3 for automatic domain SSL</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle size={14} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle size={14} className="text-emerald-400 shrink-0" />
                       <span>Maintains outbound-only TLS gRPC heartbeat stream</span>
                     </li>
                   </ul>
@@ -209,12 +166,12 @@ export default function Home() {
         </section>
 
         {/* CALL TO ACTION / PRICING BANNER */}
-        <section className="w-full py-16 border-t border-[var(--border)] transition-colors">
+        <section className="w-full py-16 border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-xl border border-[#5560d6]/30 bg-[var(--surface)] p-8 sm:p-12 transition-colors">
+            <div className="rounded-xl border border-[#7980e0]/25 bg-white/[0.025] p-8 sm:p-12 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#7980e0]">
                     Pricing
                   </span>
                   <div className="mt-3 flex items-baseline gap-2">
@@ -228,7 +185,7 @@ export default function Home() {
                   <div className="mt-6 flex flex-wrap items-center gap-3">
                     <a
                       href="#install"
-                      className="rounded bg-[#5560d6] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4f46e5]"
+                      className="rounded bg-[#7980e0] px-5 py-2.5 text-sm font-semibold text-[#04060d] transition-colors hover:bg-[#a5b4fc]"
                     >
                       Install Tako Now
                     </a>
@@ -236,7 +193,7 @@ export default function Home() {
                       href="https://github.com/gettako/tako"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-[var(--surface-2)] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[#5560d6]/50"
+                      className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-white/[0.05] px-5 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[#7980e0]/50"
                     >
                       <span>View Source</span>
                       <ArrowUpRight size={15} weight="bold" />
@@ -251,7 +208,7 @@ export default function Home() {
                     "Self-hosted: your code never leaves your infrastructure",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[var(--foreground)]">
-                      <CheckCircle size={18} weight="fill" className="mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-400" />
+                      <CheckCircle size={18} weight="fill" className="mt-0.5 shrink-0 text-emerald-400" />
                       <span>{item}</span>
                     </li>
                   ))}

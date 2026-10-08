@@ -3,7 +3,6 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@fontsource/iosevka/400.css";
 import "@fontsource/iosevka/500.css";
 import "@fontsource/iosevka/600.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,9 +20,9 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Tako — Self-Hosted Application Platform",
+  title: "Tako — Deploy Into the Deep",
   description:
-    "Lightweight, personal self-hosted platform for automatically deploying applications to your VPS from GitHub. Built with Go, Docker, and Traefik. Zero bloat.",
+    "A featherweight self-hosted platform for your own servers. One control plane, tentacles reaching every node — the entire stack idles at ~63 MiB.",
   keywords: [
     "tako",
     "self-hosted",
@@ -68,16 +67,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${jakartaSans.variable}`}
+      className={`dark ${inter.variable} ${jakartaSans.variable}`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#5560d6] selection:text-white antialiased transition-colors duration-200">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-        </ThemeProvider>
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#7980e0] selection:text-white antialiased">
+        {children}
       </body>
     </html>
   );

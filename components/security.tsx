@@ -29,7 +29,7 @@ const cards = [
 
 export function Security() {
   return (
-    <section id="security" className="w-full border-t border-[var(--border)] bg-[var(--surface)] py-16 transition-colors sm:py-24">
+    <section id="security" className="w-full border-t border-[var(--border)] bg-white/[0.025] py-16 transition-colors sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
@@ -50,7 +50,7 @@ export function Security() {
             return (
               <div
                 key={card.title}
-                className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-5 transition-colors"
+                className="rounded-lg border border-[var(--border)] bg-white/[0.05] p-5 transition-colors"
               >
                 <div className={`inline-flex h-9 w-9 items-center justify-center rounded border ${card.badge}`}>
                   <Icon size={20} weight="regular" className={card.accent} />
@@ -63,9 +63,9 @@ export function Security() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] text-[var(--muted)]">
-          <span className="rounded border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1">Runs 100% on your servers</span>
-          <span className="rounded border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1">No cloud account required</span>
-          <span className="rounded border border-[var(--border)] bg-[var(--surface-2)] px-2.5 py-1">Apache 2.0 — auditable source</span>
+          <span className="rounded border border-[var(--border)] bg-white/[0.05] px-2.5 py-1">Runs 100% on your servers</span>
+          <span className="rounded border border-[var(--border)] bg-white/[0.05] px-2.5 py-1">No cloud account required</span>
+          <span className="rounded border border-[var(--border)] bg-white/[0.05] px-2.5 py-1">Apache 2.0 — auditable source</span>
         </div>
       </div>
     </section>

@@ -58,7 +58,7 @@ const phases: Phase[] = [
     icon: Rocket,
     label: "Later — v1.0",
     status: "Exploring",
-    statusColor: "border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)]",
+    statusColor: "border-[var(--border)] bg-white/[0.05] text-[var(--muted)]",
     items: [
       {
         title: "Stable release",
@@ -95,7 +95,7 @@ export function Roadmap() {
             return (
               <div
                 key={phase.label}
-                className="flex flex-col rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors"
+                className="flex flex-col rounded-lg border border-[var(--border)] bg-white/[0.025] p-5 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-[var(--foreground)]">

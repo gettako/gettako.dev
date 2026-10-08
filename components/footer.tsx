@@ -6,7 +6,7 @@ import { GithubLogo, BookOpen, Terminal } from "@phosphor-icons/react";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-[var(--border)] bg-[var(--background)] py-12 text-xs text-[var(--muted)] transition-colors">
+    <footer className="w-full border-t border-[var(--border)] bg-transparent py-12 text-xs text-[var(--muted)] transition-colors">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-3">

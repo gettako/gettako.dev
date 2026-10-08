@@ -253,7 +253,7 @@ export function Comparison() {
         {/* ========================================================================= */}
         <div className="mt-8 block md:hidden">
           {/* Mobile Tab Buttons */}
-          <div className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-1">
+          <div className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-white/[0.05] p-1">
             {competitors.map((comp) => {
               const isActive = activeCompetitor === comp.id;
               return (
@@ -263,7 +263,7 @@ export function Comparison() {
                   onClick={() => setActiveCompetitor(comp.id)}
                   className={`flex-1 rounded-md py-2 px-2 text-center font-mono text-xs font-medium transition-all ${
                     isActive
-                      ? "bg-[var(--surface)] text-[var(--foreground)] shadow-xs border border-[var(--border)]"
+                      ? "bg-white/[0.025] text-[var(--foreground)] shadow-xs border border-[var(--border)]"
                       : "text-[var(--muted)] hover:text-[var(--foreground)]"
                   }`}
                 >
@@ -277,9 +277,9 @@ export function Comparison() {
           </div>
 
           {/* Mobile Comparison Card */}
-          <div className="mt-3 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] transition-colors">
+          <div className="mt-3 overflow-hidden rounded-lg border border-[var(--border)] bg-white/[0.025] transition-colors">
             {/* Column Headers */}
-            <div className="grid grid-cols-2 border-b border-[var(--border)] bg-[var(--surface-3)] font-mono text-xs">
+            <div className="grid grid-cols-2 border-b border-[var(--border)] bg-white/[0.04] font-mono text-xs">
               <div className="p-3 border-r border-[var(--border)] bg-[#5560d6]/[0.05] dark:bg-[#7980e0]/[0.06]">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#5560d6] dark:text-[#7980e0]">Tako</span>
@@ -297,7 +297,7 @@ export function Comparison() {
               {comparisonData.map((row) => {
                 const compVal = row[activeCompetitor];
                 return (
-                  <div key={row.feature} className="p-3 transition-colors hover:bg-[var(--surface-2)]/40">
+                  <div key={row.feature} className="p-3 transition-colors hover:bg-white/[0.03]">
                     <div className="text-[11px] font-mono text-[var(--muted)] uppercase tracking-wider mb-1.5 flex items-center justify-between">
                       <span>{row.feature}</span>
                       {row.featureSub && (
@@ -343,11 +343,11 @@ export function Comparison() {
         {/* ========================================================================= */}
         {/* DESKTOP VIEW (>= md): COMPREHENSIVE 5-COLUMN TABLE                        */}
         {/* ========================================================================= */}
-        <div className="mt-8 hidden md:block overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] transition-colors">
+        <div className="mt-8 hidden md:block overflow-hidden rounded-lg border border-[var(--border)] bg-white/[0.025] transition-colors">
           <div className="overflow-x-auto">
             <table className="w-full text-left font-sans text-xs">
               <thead>
-                <tr className="border-b border-[var(--border)] bg-[var(--surface-3)] font-mono text-[11px] text-[var(--muted)]">
+                <tr className="border-b border-[var(--border)] bg-white/[0.04] font-mono text-[11px] text-[var(--muted)]">
                   <th className="py-2.5 px-3.5 sm:px-5 font-medium min-w-[150px]">Feature</th>
                   <th className="py-2.5 px-3.5 sm:px-5 font-semibold text-[#5560d6] dark:text-[#7980e0] bg-[#5560d6]/[0.04] dark:bg-[#7980e0]/[0.05] min-w-[170px]">
                     <div className="flex items-center gap-1.5">
@@ -425,7 +425,7 @@ export function Comparison() {
         </div>
 
         {/* Detailed Benchmark Methodology & Disclaimers Box */}
-        <div className="mt-5 rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-3.5 sm:p-4 text-[11px] text-[var(--muted)] space-y-2.5 transition-colors">
+        <div className="mt-5 rounded-lg border border-[var(--border)] bg-white/[0.05] p-3.5 sm:p-4 text-[11px] text-[var(--muted)] space-y-2.5 transition-colors">
           <div className="flex items-center gap-1.5 font-mono font-semibold text-[var(--foreground)] text-xs">
             <Info size={14} className="text-[#5560d6] dark:text-[#7980e0]" />
             <span>Benchmark Notes &amp; Disclaimers</span>
@@ -437,7 +437,7 @@ export function Comparison() {
             </div>
             <div>
               <strong className="text-[var(--foreground)] block mb-0.5">Host Delta vs Container:</strong>
-              Host Delta (<code className="rounded bg-[var(--surface)] px-1 py-0.2 font-mono">free -m</code>) accounts for containerd-shims, veth interfaces, and cgroups. We report both for full transparency.
+              Host Delta (<code className="rounded bg-white/[0.025] px-1 py-0.2 font-mono">free -m</code>) accounts for containerd-shims, veth interfaces, and cgroups. We report both for full transparency.
             </div>
             <div>
               <strong className="text-[var(--foreground)] block mb-0.5">Single-Team Simplicity:</strong>

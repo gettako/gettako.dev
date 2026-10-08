@@ -40,14 +40,14 @@ export function RamMeter() {
   }, []);
 
   return (
-    <section className="w-full border-t border-[var(--border)] bg-[var(--surface)] py-16 transition-colors sm:py-20">
+    <section id="pressure" className="relative w-full py-16 transition-colors sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
-            Zero bloat, measured
+            Pressure-tested
           </span>
           <h2 className="mt-2 text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
-            The whole control plane idles at{" "}
+            Built for the deep: the whole control plane idles at{" "}
             <span className="text-[#5560d6] dark:text-[#7980e0]">~63 MiB</span>.
           </h2>
           <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed sm:text-base">
@@ -71,7 +71,7 @@ export function RamMeter() {
                     {bar.range}
                   </span>
                 </div>
-                <div className="h-4 w-full overflow-hidden rounded border border-[var(--border)] bg-[var(--surface-2)]">
+                <div className="h-4 w-full overflow-hidden rounded border border-[var(--border)] bg-white/[0.05]">
                   <div
                     className={`h-full rounded-sm transition-[width] duration-1000 ease-out ${
                       bar.highlight
