@@ -1,47 +1,72 @@
 import Link from "next/link";
-import { Nav } from "@/components/nav";
+import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { House, BookOpen } from "@phosphor-icons/react/dist/ssr";
+import { BookOpen, Terminal, House } from "@phosphor-icons/react/dist/ssr";
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#fcfcff] text-[var(--ink)]">
-      <Nav />
-      <main className="flex flex-1 items-center justify-center px-4 py-32 sm:px-6">
+    <div className="flex min-h-screen flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors">
+      <Navbar />
+
+      <main className="flex-1 flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6">
         <div className="mx-auto max-w-xl text-center">
-          <p className="kicker">
-            <span className="n">404</span>
-            <span className="mx-3 opacity-40">/</span>
-            Not found
-          </p>
-          <h1 className="display-xl mt-6 text-6xl sm:text-7xl">
-            Hmm,
-            <br />
-            <span className="text-[#5560d6]">nothing here.</span>
+          {/* 404 Pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#5560d6]/30 bg-[#5560d6]/10 px-3.5 py-1 text-xs font-mono font-medium text-[#5560d6] dark:text-[#7980e0]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#e85347]" />
+            <span>HTTP 404 • Not Found</span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--foreground)]">
+            Container not found.
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
-            This route was never deployed. Let's get you back to the surface.
+
+          {/* Message */}
+          <p className="mt-4 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+            The path you requested does not exist on this cluster. It may have been stopped, moved, or never deployed.
           </p>
+
+          {/* Terminal Mockup: Light in light mode, Dark in dark mode */}
+          <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--terminal-body-bg)] p-4 text-left font-mono text-xs text-[var(--terminal-text)] transition-colors">
+            <div className="text-[var(--terminal-muted)]">
+              <span className="text-[#e85347] font-semibold">error:</span> route not recognized by reverse proxy
+            </div>
+            <div className="text-[var(--terminal-muted)] mt-1">
+              traefik: 404 page not found — check domain routing rules
+            </div>
+          </div>
+
+          {/* Navigation Actions */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#5560d6] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#3f45b8]"
+              className="inline-flex items-center gap-2 rounded bg-[#5560d6] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#4f46e5]"
             >
-              <House size={15} weight="bold" />
-              Back to home
+              <House size={14} weight="bold" />
+              <span>Back to Home</span>
             </Link>
+
             <a
               href="https://docs.gettako.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:border-[#5560d6]/50"
+              className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-xs font-medium text-[var(--foreground)] transition-colors hover:border-[#5560d6]/40"
             >
-              <BookOpen size={15} />
-              Documentation
+              <BookOpen size={14} />
+              <span>Documentation</span>
             </a>
+
+            <Link
+              href="/install.sh"
+              className="inline-flex items-center gap-1.5 rounded border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-xs font-mono text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            >
+              <Terminal size={14} />
+              <span>install.sh</span>
+            </Link>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );

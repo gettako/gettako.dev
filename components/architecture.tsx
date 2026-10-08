@@ -1,150 +1,142 @@
-import Image from "next/image";
-import { SectionHead } from "@/components/ui";
-import { LockKey, PlugsConnected, Package } from "@phosphor-icons/react/dist/ssr";
+"use client";
 
-function Diagram() {
-  return (
-    <svg viewBox="0 0 900 420" className="h-auto w-full" role="img" aria-label="Tako the octopus connecting to servers">
-      <defs>
-        <linearGradient id="diaArm" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#a5b4fc" />
-          <stop offset="100%" stopColor="#5560d6" />
-        </linearGradient>
-      </defs>
-
-      {/* connector arms */}
-      <g fill="none" strokeLinecap="round">
-        <path d="M270 150 C420 130 560 120 668 128" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
-        <path d="M270 150 C420 130 560 120 668 128" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
-        <path d="M275 210 C430 210 560 210 668 210" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
-        <path d="M275 210 C430 210 560 210 668 210" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
-        <path d="M270 270 C420 290 560 300 668 292" stroke="url(#diaArm)" strokeWidth="7" strokeOpacity="0.35" />
-        <path d="M270 270 C420 290 560 300 668 292" stroke="#5560d6" strokeWidth="2" strokeDasharray="8 10" className="flow" />
-      </g>
-
-      {/* server cards */}
-      {[
-        { y: 96, name: "srv-01", apps: "api · web" },
-        { y: 178, name: "srv-02", apps: "worker · queue" },
-        { y: 260, name: "srv-03", apps: "db · cache" },
-      ].map((s) => (
-        <g key={s.name}>
-          <rect x="668" y={s.y} width="200" height="64" rx="14" fill="#fff" stroke="rgba(25,29,51,0.1)" />
-          <circle cx="694" cy={s.y + 24} r="5" fill="#22c55e" />
-          <text x="708" y={s.y + 28} fill="#191d33" fontSize="14" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif">
-            {s.name}
-          </text>
-          <text x="694" y={s.y + 48} fill="#5d657f" fontSize="11" fontFamily="Iosevka, monospace">
-            {s.apps} · healthy
-          </text>
-        </g>
-      ))}
-
-      <text x="784" y="360" textAnchor="middle" fill="#9aa1bd" fontSize="11" fontFamily="Iosevka, monospace">
-        outbound TLS gRPC · 0 inbound ports
-      </text>
-    </svg>
-  );
-}
-
-const TRUTHS = [  { icon: PlugsConnected, title: "Outbound only", copy: "Workers dial out. Zero inbound management ports — invisible to port scanners." },
-  { icon: LockKey, title: "Encrypted at rest", copy: "Secrets sealed in SQLite with AES-256-GCM. No Postgres to babysit." },
-  { icon: Package, title: "Four containers", copy: "Go, web console, Traefik. Fewer moving parts, fewer CVEs to chase." },
-];
+import { ShieldCheck, ArrowsLeftRight, LockKey, TerminalWindow, PlugsConnected } from "@phosphor-icons/react";
 
 export function Architecture() {
   return (
-    <section id="architecture" className="border-b border-[var(--line)]">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32">
-        <SectionHead
-          n="03"
-          kicker="Architecture"
-          title={
-            <>
-              One Tako.
-              <br />
-              <span className="text-[var(--faint)]">Every server within reach.</span>
-            </>
-          }
-          lede="Yes — that's the actual Tako, drawn by a human, running your infrastructure. One control plane orchestrates every node. No consensus clusters, no Kubernetes overhead."
-        />
-
-        <div className="mt-12 grid items-center gap-8 rounded-[2rem] border border-[#5560d6]/15 bg-gradient-to-br from-[var(--wash)] to-white p-6 sm:p-10 lg:grid-cols-12">
-          <div className="text-center lg:col-span-4">
-            <Image
-              src="/tako-mark.png"
-              alt="Tako control plane"
-              width={512}
-              height={512}
-              className="wiggle mx-auto w-40 sm:w-48"
-            />
-            <p className="mt-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#5560d6]">
-              Control plane
-            </p>
-            <p className="mt-1 font-mono text-[11px] text-[var(--faint)]">dashboard · api · grpc</p>
-          </div>
-          <div className="lg:col-span-8">
-            <Diagram />
-          </div>
+    <section id="architecture" className="w-full py-16 sm:py-24 border-t border-[var(--border)] transition-colors">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#5560d6] dark:text-[#7980e0]">
+            System Architecture
+          </span>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
+            Designed for simplicity. Built for developers & teams.
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+            One central control plane orchestrates multiple remote worker nodes. No distributed consensus clusters, no Kubernetes overhead, and no complicated ingress overlays.
+          </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[var(--line)] bg-white p-6 sm:p-7">
-            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#5560d6]">
-              Control plane — :3000 / :8080 / :50051
-            </p>
-            <ul className="mt-4 space-y-3.5">
-              {[
-                ["Web console", "Next.js 16 dashboard — deployments, logs, team members."],
-                ["Go REST API", "Deploy coordinator, git webhooks, real-time log streaming over SSE."],
-                ["Encrypted SQLite", "WAL mode, AES-256-GCM secrets. Zero daemon, zero ops."],
-                ["gRPC coordinator", "TLS-secured heartbeat + command channel to every worker."],
-              ].map(([t, d]) => (
-                <li key={t} className="flex gap-3">
-                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#5560d6]" />
-                  <div>
-                    <p className="text-sm font-bold text-[var(--ink)]">{t}</p>
-                    <p className="mt-0.5 font-mono text-[11.5px] leading-relaxed text-[var(--muted)]">{d}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-[var(--line)] bg-white p-6 sm:p-7">
-            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-600">
-              Worker node — :80 / :443 only
-            </p>
-            <ul className="mt-4 space-y-3.5">
-              {[
-                ["Agent daemon", "Go service: Docker SDK orchestration, health supervision, build executor."],
-                ["Traefik v3", "Reverse proxy with automatic Let's Encrypt and zero-downtime cutover."],
-                ["App containers", "Direct Dockerfile builds — Go, Node, Laravel, Rust, Python."],
-                ["Local rollback", "Previous images retained on-node. One click back, no rebuild."],
-              ].map(([t, d]) => (
-                <li key={t} className="flex gap-3">
-                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-                  <div>
-                    <p className="text-sm font-bold text-[var(--ink)]">{t}</p>
-                    <p className="mt-0.5 font-mono text-[11.5px] leading-relaxed text-[var(--muted)]">{d}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        {/* Visual Topology Grid */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Primary Control Plane Box */}
+          <div className="lg:col-span-5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6 flex flex-col justify-between transition-colors">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded border border-[#5560d6]/40 bg-[#5560d6]/10 px-2.5 py-1 text-xs font-mono font-medium text-[#5560d6] dark:text-[#7980e0]">
+                  <TerminalWindow size={14} />
+                  Primary Server
+                </span>
+                <span className="font-mono text-[11px] text-[var(--muted)]">Port 3000 / 8080 / 50051</span>
+              </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {TRUTHS.map((t) => (
-            <div key={t.title} className="flex gap-4 rounded-2xl border border-[var(--line)] bg-white p-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--wash)]">
-                <t.icon size={20} className="text-[#5560d6]" />
-              </span>
-              <div>
-                <h3 className="font-display text-[15px] font-bold text-[var(--ink)]">{t.title}</h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-[var(--muted)]">{t.copy}</p>
+              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">Tako Control Plane</h3>
+              <p className="mt-1 text-xs text-[var(--muted)] leading-relaxed">
+                The single pane of glass for all your deployments, services, and worker nodes.
+              </p>
+
+              <div className="mt-6 space-y-3 font-mono text-xs">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Next.js 16 Web Console</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Base UI (`base-vega`), Tailwind CSS 4, zero shadows, flat theme design.
+                  </div>
+                </div>
+
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Go REST API &amp; SSE Streamer</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Real-time container logs, git webhook handlers, and deploy coordinator.
+                  </div>
+                </div>
+
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Encrypted SQLite DB (WAL Mode)</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Pure-Go SQLite engine with AES-256-GCM secret encryption at rest.
+                  </div>
+                </div>
+
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">gRPC Coordinator (TLS)</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Bidirectional heartbeat and command dispatcher for connected worker agents.
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
+
+            <div className="mt-6 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-[11px] text-[var(--muted)]">
+              <LockKey size={14} className="text-[#5560d6] dark:text-[#7980e0]" />
+              <span>Installed via <code className="text-[var(--foreground)] font-semibold">gettako.dev/install.sh</code></span>
+            </div>
+          </div>
+
+          {/* Connection Channel Middle Box */}
+          <div className="lg:col-span-2 flex flex-col items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-4 text-center transition-colors">
+            <div className="h-10 w-10 rounded-full border border-[#5560d6]/50 bg-[#5560d6]/10 flex items-center justify-center text-[#5560d6] dark:text-[#7980e0]">
+              <ArrowsLeftRight size={20} weight="bold" />
+            </div>
+            <div className="mt-3 font-mono text-xs font-semibold text-[var(--foreground)]">
+              Outbound TLS
+            </div>
+            <div className="mt-1 text-[11px] text-[var(--muted)] leading-tight">
+              gRPC bidirectional stream
+            </div>
+            <div className="mt-4 rounded border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
+              0 Inbound Ports Open
+            </div>
+            <p className="mt-3 text-[10px] text-[var(--muted)] leading-normal">
+              Nodes initiate connection outward to Control Plane. Worker servers remain invisible to public port scanners.
+            </p>
+          </div>
+
+          {/* Remote Worker Node Box */}
+          <div className="lg:col-span-5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6 flex flex-col justify-between transition-colors">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400">
+                  <PlugsConnected size={14} />
+                  Remote Worker Node
+                </span>
+                <span className="font-mono text-[11px] text-[var(--muted)]">Port 80 / 443 only</span>
+              </div>
+
+              <h3 className="mt-4 text-lg font-bold text-[var(--foreground)]">Tako Node Agent &amp; Traefik</h3>
+              <p className="mt-1 text-xs text-[var(--muted)] leading-relaxed">
+                Lightweight worker daemon that executes builds and routes traffic to isolated containers.
+              </p>
+
+              <div className="mt-6 space-y-3 font-mono text-xs">
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Tako Agent Daemon (Go)</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Docker Engine SDK coordinator, health check supervisor, build executor.
+                  </div>
+                </div>
+
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Traefik v3 Reverse Proxy</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Automated Let&apos;s Encrypt SSL certificates and zero-downtime traffic cutover.
+                  </div>
+                </div>
+
+                <div className="rounded border border-[var(--border)] bg-[var(--surface-2)] p-3 transition-colors">
+                  <div className="font-semibold text-[var(--foreground)]">Application Containers</div>
+                  <div className="text-[11px] text-[var(--muted)] mt-0.5">
+                    Direct Dockerfile builds (Go, Node, Laravel, Rust, Python) with local image rollback retention.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-[11px] text-[var(--muted)]">
+              <ShieldCheck size={14} className="text-emerald-600 dark:text-emerald-400" />
+              <span>Installed via <code className="text-[var(--foreground)] font-semibold">gettako.dev/agent.sh</code></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

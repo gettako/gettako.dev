@@ -3,39 +3,60 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "@fontsource/iosevka/400.css";
 import "@fontsource/iosevka/500.css";
 import "@fontsource/iosevka/600.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-heading",
   display: "swap",
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Tako — Ship it yourself",
+  title: "Tako — Self-Hosted Application Platform",
   description:
-    "Tako is a featherweight self-hosted PaaS. Deploy to your own servers on git push — 63 MiB idle, zero inbound ports, $0 forever. Apache 2.0.",
-  keywords: ["tako", "self-hosted", "paas", "deployment", "coolify alternative", "dokploy alternative", "docker", "vps"],
-  authors: [{ name: "Tako", url: "https://gettako.dev" }],
+    "Lightweight, personal self-hosted platform for automatically deploying applications to your VPS from GitHub. Built with Go, Docker, and Traefik. Zero bloat.",
+  keywords: [
+    "tako",
+    "self-hosted",
+    "paas",
+    "deployment",
+    "coolify alternative",
+    "dokploy alternative",
+    "docker",
+    "traefik",
+    "vps",
+  ],
+  authors: [{ name: "Tako Team", url: "https://gettako.dev" }],
   openGraph: {
-    title: "Tako — Ship it yourself",
-    description: "Deploy to your own servers on git push. Zero bloat.",
+    title: "Tako — Self-Hosted Application Platform",
+    description:
+      "Deploy on git push to your own servers. Outbound gRPC streams, zero-downtime rollouts, and encrypted secrets without cloud lock-in.",
     url: "https://gettako.dev",
     siteName: "Tako",
+    images: [
+      {
+        url: "https://gettako.dev/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Tako Logo",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
   icons: {
-    icon: "/tako-mark.png",
-    apple: "/tako-mark.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
   },
 };
 
@@ -45,8 +66,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jakartaSans.variable}`}
+    >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#5560d6] selection:text-white antialiased transition-colors duration-200">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

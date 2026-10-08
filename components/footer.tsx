@@ -1,65 +1,82 @@
-import Image from "next/image";
-import { GithubLogo, BookOpen, Terminal } from "@phosphor-icons/react/dist/ssr";
+"use client";
 
-const LINKS: [string, string][] = [
-  ["Manifesto", "#manifesto"],
-  ["How it works", "#how"],
-  ["Architecture", "#architecture"],
-  ["Features", "#features"],
-  ["Specs", "#specs"],
-  ["Install", "#install"],
-  ["install.sh", "/install.sh"],
-  ["Docs", "https://docs.gettako.dev"],
-];
+import Image from "next/image";
+import Link from "next/link";
+import { GithubLogo, BookOpen, Terminal } from "@phosphor-icons/react";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-7xl px-4 pt-16 sm:px-6">
-        <div className="flex flex-col justify-between gap-10 border-t border-[var(--line)] pt-12 md:flex-row">
-          <div className="max-w-sm">
-            <Image src="/logo.svg" alt="Tako" width={120} height={40} className="h-9 w-auto" />
-            <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-              A featherweight self-hosted PaaS. Your code, delivered — to servers you own.
-            </p>
-            <p className="mt-4 font-mono text-[11px] text-[var(--faint)]">
-              Apache 2.0 · Built by Octopy ID
-            </p>
+    <footer className="w-full border-t border-[var(--border)] bg-[var(--background)] py-12 text-xs text-[var(--muted)] transition-colors">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <div className="h-7 flex items-center">
+              <Image
+                src="/logo.svg"
+                alt="Tako"
+                width={80}
+                height={26}
+                className="h-6 w-auto object-contain dark:hidden"
+              />
+              <Image
+                src="/logo-dark.svg"
+                alt="Tako"
+                width={80}
+                height={26}
+                className="h-6 w-auto object-contain hidden dark:block"
+              />
+            </div>
+            <div>
+              <span className="text-[11px] text-[var(--muted)] ml-2">
+                Self-hosted lightweight PaaS for developers and teams.
+              </span>
+            </div>
           </div>
 
-          <nav className="grid grid-cols-2 gap-x-16 gap-y-3">
-            {LINKS.map(([label, href]) => (
-              <a key={label} href={href} className="text-[13.5px] font-semibold text-[var(--muted)] transition-colors hover:text-[#5560d6]">
-                {label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-start gap-2.5">
-            {[
-              { href: "https://github.com/gettako/tako", label: "GitHub", Icon: GithubLogo },
-              { href: "https://docs.gettako.dev", label: "Docs", Icon: BookOpen },
-              { href: "/install.sh", label: "install.sh", Icon: Terminal },
-            ].map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--line)] text-[var(--muted)] transition-colors hover:border-[#5560d6]/50 hover:text-[#5560d6]"
-              >
-                <Icon size={18} weight="fill" />
-              </a>
-            ))}
+          <div className="flex flex-wrap items-center gap-6 font-mono text-[11px]">
+            <Link
+              href="/install.sh"
+              className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+            >
+              <Terminal size={13} />
+              install.sh
+            </Link>
+            <Link
+              href="/agent.sh"
+              className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+            >
+              <Terminal size={13} />
+              agent.sh
+            </Link>
+            <a
+              href="https://docs.gettako.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+            >
+              <BookOpen size={13} />
+              docs.gettako.dev
+            </a>
+            <a
+              href="https://github.com/gettako/tako"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+            >
+              <GithubLogo size={13} weight="fill" />
+              github.com/gettako/tako
+            </a>
           </div>
         </div>
-      </div>
 
-      <div aria-hidden="true" className="pointer-events-none mt-10 select-none overflow-hidden">
-        <p className="display-xl -mb-[0.24em] text-center text-[27vw] leading-none text-[#5560d6]/[0.06]">
-          tako
-        </p>
+        <div className="mt-8 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-[var(--muted)]">
+          <div>
+            Released under the <span className="text-[var(--foreground)] font-semibold">Apache License 2.0</span>.
+          </div>
+          <div>
+            Octopy ID
+          </div>
+        </div>
       </div>
     </footer>
   );
