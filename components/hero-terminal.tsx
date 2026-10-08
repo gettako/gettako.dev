@@ -35,11 +35,22 @@ export function HeroTerminal() {
         <div className="text-[var(--terminal-muted)]">
           <span className="text-[#5560d6] dark:text-[#7980e0]">==&gt;</span> Launching Tako control plane stack...
         </div>
-        <div className="pl-4 text-[11px] text-[var(--terminal-muted)]">
-          ✔ Container tako-traefik     <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Ports 80, 443)<br />
-          ✔ Container tako-server      <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Port 8080, gRPC 50051)<br />
-          ✔ Container tako-console         <span className="text-emerald-600 dark:text-emerald-400 font-medium">Started</span> (Port 3000)<br />
-          ✔ Container tako-agent <span className="text-emerald-600 dark:text-emerald-400 font-medium">Connected</span>
+        <div className="pl-4 text-[11px] text-[var(--terminal-muted)] space-y-1">
+          {[
+            ["tako-traefik", "Started", "Ports 80, 443"],
+            ["tako-server", "Started", "Port 8080, gRPC 50051"],
+            ["tako-console", "Started", "Port 3000"],
+            ["tako-agent", "Connected", ""],
+          ].map(([name, status, ports]) => (
+            <div key={name} className="grid grid-cols-[auto_92px_1fr] items-baseline gap-2">
+              <span>
+                <span className="mr-1.5 text-emerald-600 dark:text-emerald-400">✔</span>
+                Container {name}
+              </span>
+              <span className="font-medium text-emerald-600 dark:text-emerald-400">{status}</span>
+              <span>{ports && `(${ports})`}</span>
+            </div>
+          ))}
         </div>
         <div className="pt-2 text-emerald-600 dark:text-emerald-400 font-semibold">
           ================================================================<br />

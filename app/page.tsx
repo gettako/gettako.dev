@@ -56,23 +56,6 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Heavy Development Notice Banner */}
-              <div className="mt-8 w-full max-w-3xl rounded-lg border border-amber-500/30 bg-amber-500/10 p-3.5 sm:p-4 text-left">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500/20 font-mono text-[11px] font-bold text-amber-600 dark:text-amber-400">
-                    !
-                  </span>
-                  <div className="text-xs sm:text-sm text-[var(--foreground)]">
-                    <p className="font-semibold text-amber-600 dark:text-amber-400">
-                      Active Heavy Development
-                    </p>
-                    <p className="mt-0.5 text-xs text-[var(--muted)] leading-relaxed">
-                      Tako is currently in early alpha and undergoing rapid iteration. Features, APIs, and deployment scripts may change frequently. Expect bugs and breaking changes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               {/* Install Box Component */}
               <div id="install" className="mt-8 w-full max-w-3xl lg:max-w-4xl">
                 <InstallerTabs />

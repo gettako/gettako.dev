@@ -27,7 +27,7 @@ export function Footer() {
               />
             </div>
             <div>
-              <span className="text-[11px] text-[var(--muted)] ml-2">
+              <span className="text-[11px] text-[var(--muted)]">
                 Self-hosted lightweight PaaS for developers and teams.
               </span>
             </div>
