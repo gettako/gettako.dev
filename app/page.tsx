@@ -1,8 +1,6 @@
 import { Navbar } from "@/components/navbar";
-import { AbyssHero } from "@/components/abyss/abyss-hero";
-import { MarineSnow } from "@/components/abyss/marine-snow";
-import { DepthMeter } from "@/components/abyss/depth-meter";
-import { OctopusArchitecture } from "@/components/abyss/octopus-architecture";
+import { ReachHero } from "@/components/reach/reach-hero";
+import { ArchitectureScene } from "@/components/reach/architecture-scene";
 import { RamMeter } from "@/components/ram-meter";
 import { TentacleDivider } from "@/components/tentacle-divider";
 import { CopyButton } from "@/components/copy-button";
@@ -16,20 +14,18 @@ import { ArrowUpRight, CheckCircle, Terminal, Cpu } from "@phosphor-icons/react/
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col text-[var(--foreground)]">
-      <MarineSnow />
-      <DepthMeter />
       <Navbar />
 
       <main className="relative z-10 flex-1">
-        {/* HERO — the octopus surfaces */}
-        <AbyssHero />
+        {/* HERO — deployments, delivered */}
+        <ReachHero />
 
         <TentacleDivider />
 
         {/* PRESSURE GAUGE — zero bloat, measured */}
         <RamMeter />
 
-        {/* ARCHITECTURE — one head, tentacles everywhere */}
+        {/* ARCHITECTURE — the core reaches every server */}
         <section id="architecture" className="w-full py-16 sm:py-24 border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
@@ -37,16 +33,16 @@ export default function Home() {
                 System Architecture
               </span>
               <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
-                One head. Tentacles everywhere.
+                One core reaches every server.
               </h2>
               <p className="mt-3 text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-                The control plane is the octopus head — a single pane of glass for deployments,
-                services, and nodes. Every tentacle is an outbound TLS gRPC stream to a worker.
-                No consensus clusters, no Kubernetes overhead, no ingress overlays.
+                The control plane is a single hub — a single pane of glass for deployments,
+                services, and nodes. It reaches out over outbound TLS gRPC and stacks containers
+                onto your workers. No consensus clusters, no Kubernetes overhead, no ingress overlays.
               </p>
             </div>
 
-            <OctopusArchitecture />
+            <ArchitectureScene />
           </div>
         </section>
 

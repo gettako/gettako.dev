@@ -8,43 +8,39 @@
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ABYSS THEME — dark-only. The page is a descent: the fixed body gradient
-   runs from twilight blue at the top to near-black at the bottom. Sections
-   use translucent white overlays so the depth shows through. */
+/* REACH THEME — dark, neutral, precise. No ocean. The visual language is
+   "delivery": a glowing core (control plane) reaching out with gradient
+   arms, carrying crisp container boxes to server nodes. */
 :root,
 .dark {
   --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --background: #04060d;
-  --foreground: #e9edf6;
-  --surface: #0a0f1e;
+  --background: #060a13;
+  --foreground: #eceff7;
+  --surface: #0a0f1d;
   --surface-2: #0d1424;
   --surface-3: #111a2e;
-  --muted: #8f99b5;
-  --border: rgba(148, 163, 200, 0.14);
-  --border-strong: rgba(148, 163, 200, 0.28);
+  --muted: #939cb8;
+  --border: rgba(150, 165, 205, 0.13);
+  --border-strong: rgba(150, 165, 205, 0.26);
   --primary: #7980e0;
   --primary-light: #a5b4fc;
-  --card-bg: #0a0f1e;
+  --card-bg: #0a0f1d;
   --code-bg: rgba(0, 0, 0, 0.35);
   --terminal-bar-bg: #0b1120;
-  --terminal-body-bg: rgba(2, 4, 10, 0.55);
-  --terminal-text: #dbe2f2;
-  --terminal-muted: #8f99b5;
-  --terminal-border: rgba(148, 163, 200, 0.16);
-  --abyss-cyan: #22d3ee;
+  --terminal-body-bg: rgba(3, 5, 12, 0.6);
+  --terminal-text: #dde3f3;
+  --terminal-muted: #939cb8;
+  --terminal-border: rgba(150, 165, 205, 0.15);
+  --reach-cyan: #22d3ee;
 }
 
 body {
-  background-color: #04060d;
-  background-image: linear-gradient(
-    180deg,
-    #0a1020 0%,
-    #070c18 28%,
-    #04070f 60%,
-    #02040a 100%
-  );
+  background-color: #060a13;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(121, 128, 224, 0.09) 0%, transparent 60%),
+    linear-gradient(180deg, #080d18 0%, #060a13 45%, #04070e 100%);
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans);
@@ -65,27 +61,26 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
-/* Bioluminescent gradient text */
-.abyss-glow-text {
-  background: linear-gradient(100deg, #a5b4fc 0%, #7980e0 40%, #22d3ee 100%);
+/* Gradient headline accent */
+.reach-glow-text {
+  background: linear-gradient(100deg, #c7d0ff 0%, #7980e0 55%, #22d3ee 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Soft radial glow behind the hero octopus */
-.abyss-hero-glow {
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 42%,
-    rgba(121, 128, 224, 0.16) 0%,
-    rgba(34, 211, 238, 0.05) 45%,
-    transparent 70%
-  );
+/* Faint engineering grid backdrop */
+.reach-grid {
+  background-image:
+    linear-gradient(rgba(150, 165, 205, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 165, 205, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, black 30%, transparent 75%);
 }
 
 /* ---- keyframes ---- */
 
-/* Tentacle divider flow */
 @keyframes tentacle-flow {
   to {
     stroke-dashoffset: -36;
@@ -101,54 +96,44 @@ code, kbd, samp, pre {
   animation: tentacle-flow 1.8s linear infinite;
 }
 
-/* Hero octopus gentle float */
-@keyframes abyss-float {
+/* Container boxes riding the arms */
+@keyframes box-float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-9px);
   }
 }
-.abyss-float {
-  animation: abyss-float 7s ease-in-out infinite;
+.reach-box {
+  animation: box-float 5.5s ease-in-out infinite;
 }
 
-/* Glowing octopus eyes */
-@keyframes eye-pulse {
+/* Slow orbit ring around the core */
+@keyframes core-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.reach-orbit {
+  animation: core-orbit 24s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Core breathing glow */
+@keyframes core-breathe {
   0%,
   100% {
-    opacity: 0.85;
+    opacity: 0.55;
   }
   50% {
     opacity: 1;
   }
 }
-.abyss-eye {
-  animation: eye-pulse 3.2s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.9));
-}
-
-/* Marine snow falling */
-@keyframes marine-snow {
-  0% {
-    transform: translate3d(0, -10vh, 0);
-    opacity: 0;
-  }
-  12% {
-    opacity: var(--snow-opacity, 0.5);
-  }
-  88% {
-    opacity: var(--snow-opacity, 0.5);
-  }
-  100% {
-    transform: translate3d(var(--snow-drift, 4vw), 110vh, 0);
-    opacity: 0;
-  }
-}
-.marine-snow-dot {
-  animation: marine-snow linear infinite;
+.reach-core-glow {
+  animation: core-breathe 4s ease-in-out infinite;
 }
 
 /* Pulsing status dots */
@@ -173,9 +158,9 @@ code, kbd, samp, pre {
   .tentacle-flow,
   .tentacle-flow-slow,
   .tentacle-flow-fast,
-  .abyss-float,
-  .abyss-eye,
-  .marine-snow-dot,
+  .reach-box,
+  .reach-orbit,
+  .reach-core-glow,
   .abyss-ping {
     animation: none;
   }
@@ -187,12 +172,12 @@ code, kbd, samp, pre {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #04060d;
+  background: #060a13;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 200, 0.25);
+  background: rgba(150, 165, 205, 0.25);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 200, 0.45);
+  background: rgba(150, 165, 205, 0.45);
 }
