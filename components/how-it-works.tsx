@@ -7,25 +7,25 @@ const STEPS = [
   {
     icon: GitBranch,
     title: "Push",
-    desc: "git push ke repo. Webhook membangunkan control plane — tanpa CI service di tengah.",
+    desc: "Push to your repo. A webhook wakes the control plane — no CI service in between.",
     cmd: "git push origin main",
   },
   {
     icon: Hammer,
     title: "Build",
-    desc: "Dockerfile di-build langsung dari repo. Bisa di-offload ke worker agent biar server utama tetap ringan.",
+    desc: "Your Dockerfile builds straight from the repo. Offload to a worker agent to keep the primary server light.",
     cmd: "docker build -t myapp:9f3a2c1 .",
   },
   {
     icon: Package,
     title: "Ship",
-    desc: "Image dikirim ke worker node lewat gRPC TLS outbound. Health check berjalan sebelum traffic dialihkan.",
+    desc: "The image ships to worker nodes over outbound TLS gRPC. Health checks pass before traffic moves.",
     cmd: "grpc → srv-02  •  health: passing",
   },
   {
     icon: Globe,
     title: "Serve",
-    desc: "Traefik cutover zero-downtime + TLS Let's Encrypt otomatis. Rollback satu klik kalau perlu.",
+    desc: "Traefik cuts over with zero downtime and automatic Let's Encrypt TLS. One-click rollback if needed.",
     cmd: "https://myapp.com — 200 OK",
   },
 ] as const;

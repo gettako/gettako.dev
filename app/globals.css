@@ -106,6 +106,12 @@ code, kbd, samp, pre {
   }
 }
 
+/* Subtle dotted texture for hero backdrop */
+.dotgrid {
+  background-image: radial-gradient(circle, var(--border-strong) 1.1px, transparent 1.1px);
+  background-size: 26px 26px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

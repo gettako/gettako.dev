@@ -15,57 +15,68 @@ export default function Home() {
 
       <main className="flex-1">
         {/* HERO SECTION */}
-        <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden">
+          {/* Backdrop */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <div className="dotgrid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_0%,black,transparent)]" />
+            <div className="absolute -top-40 left-1/2 h-[28rem] w-[52rem] -translate-x-1/2 rounded-full bg-[#5560d6]/[0.13] blur-3xl dark:bg-[#5560d6]/[0.16]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8">
             <div className="flex flex-col items-center text-center">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-mono font-medium text-amber-600 dark:text-amber-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1.5 text-xs font-mono font-medium text-amber-600 dark:text-amber-400">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-500 dark:bg-amber-400" />
                 <span>Heavy Development • Alpha Preview</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--foreground)] max-w-5xl leading-[1.12]">
+              <h1 className="mt-7 max-w-5xl text-4xl font-extrabold leading-[1.06] tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-7xl">
                 Deploy to your own servers on git push.{" "}
-                <span className="text-[#5560d6] dark:text-[#7980e0]">Zero bloat.</span>
+                <span className="bg-gradient-to-r from-[#5560d6] to-[#7980e0] bg-clip-text text-transparent">
+                  Zero bloat.
+                </span>
               </h1>
 
               {/* Subtitle */}
-              <p className="mt-5 max-w-3xl text-base sm:text-lg text-[var(--muted)] leading-relaxed">
+              <p className="mt-6 max-w-3xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
                 A lightweight, resource-efficient self-hosted PaaS alternative to Coolify and Dokploy with multi-user support. Run the control plane on one server, manage remote worker nodes over outbound TLS gRPC, and build directly from Dockerfiles.
               </p>
 
               {/* Specs Pills */}
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] text-[var(--muted)]">
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] text-[var(--muted)]">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1">
                   Go 1.24+
                 </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1">
                   Next.js 16
                 </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1">
                   Docker 24+
                 </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1">
                   Traefik v3
                 </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1">
+                <span className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1">
                   SQLite AES-256-GCM
                 </span>
-                <span className="rounded border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1 text-[#5560d6] dark:text-[#7980e0] font-semibold">
+                <span className="rounded-full border border-[#5560d6]/40 bg-[#5560d6]/10 px-3 py-1 font-semibold text-[#5560d6] dark:text-[#7980e0]">
                   Apache 2.0
                 </span>
               </div>
 
               {/* Install Box Component */}
-              <div id="install" className="mt-8 w-full max-w-3xl lg:max-w-4xl">
+              <div id="install" className="mt-10 w-full max-w-3xl scroll-mt-24 text-left lg:max-w-4xl">
                 <InstallerTabs />
               </div>
             </div>
 
             {/* Interactive Terminal Output Showcase */}
-            <div className="mt-12 sm:mt-16 mx-auto max-w-5xl">
-              <HeroTerminal />
+            <div className="relative mx-auto mt-14 max-w-5xl sm:mt-16">
+              <div aria-hidden="true" className="pointer-events-none absolute -inset-6 rounded-3xl bg-[#5560d6]/[0.07] blur-2xl dark:bg-[#5560d6]/[0.1]" />
+              <div className="relative">
+                <HeroTerminal />
+              </div>
             </div>
           </div>
         </section>
