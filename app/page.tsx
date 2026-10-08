@@ -1,6 +1,5 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
-import { Ticker } from "@/components/ticker";
 import { Manifesto } from "@/components/manifesto";
 import { How } from "@/components/how";
 import { Architecture } from "@/components/architecture";
@@ -56,7 +55,6 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Ticker />
         <Manifesto />
         <How />
         <Architecture />

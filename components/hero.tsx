@@ -9,6 +9,8 @@ const STATS: [string, string][] = [
   ["$0", "forever"],
 ];
 
+const PILLS = ["Go 1.24+", "Next.js 16", "Docker 24+", "Traefik v3", "SQLite AES-256-GCM", "Apache 2.0"];
+
 export function Hero() {
   return (
     <section id="top" className="dotgrid relative overflow-hidden pt-[68px]">
@@ -37,9 +39,36 @@ export function Hero() {
               to your own servers. No bloat, no lock-in — just your code, delivered.
             </p>
 
-            <div className="mt-8 max-w-xl">
-              <Cmd cmd="curl -fsSL https://gettako.dev/install.sh | bash" />
-              <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--faint)]">
+            <div className="mt-6 flex max-w-xl flex-wrap gap-2">
+              {PILLS.map((p) => (
+                <span
+                  key={p}
+                  className={`rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${
+                    p === "Apache 2.0"
+                      ? "border-[#5560d6]/40 bg-[#5560d6]/10 text-[#2f358f]"
+                      : "border-[var(--line)] bg-white text-[var(--muted)]"
+                  }`}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-7 max-w-xl space-y-3.5">
+              <div>
+                <p className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--faint)]">
+                  Control plane <span className="normal-case tracking-normal">— your main server</span>
+                </p>
+                <Cmd cmd="curl -fsSL https://gettako.dev/install.sh | bash" />
+              </div>
+              <div>
+                <p className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--faint)]">
+                  Worker node <span className="normal-case tracking-normal">— any extra VPS</span>{" "}
+                  <span className="text-[#5560d6]">(optional)</span>
+                </p>
+                <Cmd cmd="curl -fsSL https://gettako.dev/agent.sh | bash" />
+              </div>
+              <p className="font-mono text-[11px] leading-relaxed text-[var(--faint)]">
                 <span className="font-semibold text-[#9a6b1a]">alpha:</span> under heavy
                 development — things may break. You were warned, lovingly.
               </p>

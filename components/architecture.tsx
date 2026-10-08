@@ -47,8 +47,7 @@ function Diagram() {
   );
 }
 
-const TRUTHS = [
-  { icon: PlugsConnected, title: "Outbound only", copy: "Workers dial out. Zero inbound management ports — invisible to port scanners." },
+const TRUTHS = [  { icon: PlugsConnected, title: "Outbound only", copy: "Workers dial out. Zero inbound management ports — invisible to port scanners." },
   { icon: LockKey, title: "Encrypted at rest", copy: "Secrets sealed in SQLite with AES-256-GCM. No Postgres to babysit." },
   { icon: Package, title: "Four containers", copy: "Go, web console, Traefik. Fewer moving parts, fewer CVEs to chase." },
 ];
@@ -86,6 +85,51 @@ export function Architecture() {
           </div>
           <div className="lg:col-span-8">
             <Diagram />
+          </div>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div className="rounded-2xl border border-[var(--line)] bg-white p-6 sm:p-7">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#5560d6]">
+              Control plane — :3000 / :8080 / :50051
+            </p>
+            <ul className="mt-4 space-y-3.5">
+              {[
+                ["Web console", "Next.js 16 dashboard — deployments, logs, team members."],
+                ["Go REST API", "Deploy coordinator, git webhooks, real-time log streaming over SSE."],
+                ["Encrypted SQLite", "WAL mode, AES-256-GCM secrets. Zero daemon, zero ops."],
+                ["gRPC coordinator", "TLS-secured heartbeat + command channel to every worker."],
+              ].map(([t, d]) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#5560d6]" />
+                  <div>
+                    <p className="text-sm font-bold text-[var(--ink)]">{t}</p>
+                    <p className="mt-0.5 font-mono text-[11.5px] leading-relaxed text-[var(--muted)]">{d}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[var(--line)] bg-white p-6 sm:p-7">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-600">
+              Worker node — :80 / :443 only
+            </p>
+            <ul className="mt-4 space-y-3.5">
+              {[
+                ["Agent daemon", "Go service: Docker SDK orchestration, health supervision, build executor."],
+                ["Traefik v3", "Reverse proxy with automatic Let's Encrypt and zero-downtime cutover."],
+                ["App containers", "Direct Dockerfile builds — Go, Node, Laravel, Rust, Python."],
+                ["Local rollback", "Previous images retained on-node. One click back, no rebuild."],
+              ].map(([t, d]) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                  <div>
+                    <p className="text-sm font-bold text-[var(--ink)]">{t}</p>
+                    <p className="mt-0.5 font-mono text-[11.5px] leading-relaxed text-[var(--muted)]">{d}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
