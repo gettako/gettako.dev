@@ -1,63 +1,87 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import "@fontsource/iosevka/400.css";
-import "@fontsource/iosevka/500.css";
-import "@fontsource/iosevka/600.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const jakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Tako — Self-Hosted Application Platform",
+  metadataBase: new URL("https://gettako.dev"),
+  title: {
+    default: "Tako — Self-Hosting Without SSH",
+    template: "%s | Tako",
+  },
   description:
-    "Lightweight, personal self-hosted platform for automatically deploying applications to your VPS from GitHub. Built with Go, Docker, and Traefik. Zero bloat.",
+    "A lightweight, open-source PaaS for deploying containerized applications and databases across servers without SSH or open inbound ports.",
   keywords: [
-    "tako",
+    "PaaS",
     "self-hosted",
-    "paas",
+    "Docker",
     "deployment",
-    "coolify alternative",
-    "dokploy alternative",
-    "docker",
-    "traefik",
-    "vps",
+    "gRPC",
+    "Traefik",
+    "Coolify alternative",
+    "Dokploy alternative",
+    "SQLite",
+    "container management",
+    "Octopy ID",
   ],
-  authors: [{ name: "Tako Team", url: "https://gettako.dev" }],
+  authors: [{ name: "Octopy ID", url: "https://octopy.dev" }],
+  creator: "Octopy ID",
+  publisher: "Octopy ID",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Tako — Self-Hosted Application Platform",
+    title: "Tako — Self-Hosting Without SSH",
     description:
-      "Deploy on git push to your own servers. Outbound gRPC streams, zero-downtime rollouts, and encrypted secrets without cloud lock-in.",
+      "A lightweight, open-source PaaS for deploying containerized applications and databases across servers without SSH or open inbound ports.",
+    type: "website",
     url: "https://gettako.dev",
     siteName: "Tako",
-    images: [
-      {
-        url: "https://gettako.dev/logo.png",
-        width: 512,
-        height: 512,
-        alt: "Tako Logo",
-      },
-    ],
     locale: "en_US",
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tako — Self-Hosting Without SSH",
+    description:
+      "A lightweight, open-source PaaS for deploying containerized applications and databases across servers without SSH or open inbound ports.",
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/logo.png",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Tako",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Linux",
+  description:
+    "A lightweight, open-source PaaS for deploying containerized applications and databases across servers without SSH or open inbound ports.",
+  url: "https://gettako.dev",
+  author: {
+    "@type": "Organization",
+    name: "Octopy ID",
+    url: "https://octopy.dev",
+  },
+  license: "https://www.apache.org/licenses/LICENSE-2.0",
 };
 
 export default function RootLayout({
@@ -66,16 +90,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${jakartaSans.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#5560d6] selection:text-white antialiased transition-colors duration-200">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <body className="antialiased bg-background text-foreground transition-colors duration-150">
+        <ThemeProvider>
           {children}
         </ThemeProvider>
       </body>

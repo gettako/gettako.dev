@@ -1,57 +1,94 @@
 @import "tailwindcss";
+@import "@fontsource/iosevka/400.css";
+@import "@fontsource/iosevka/500.css";
+@import "@fontsource/iosevka/600.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-60: var(--primary-60);
+  --color-primary-70: var(--primary-70);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-danger: var(--status-danger);
+
+  --font-sans: var(--font-sans), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Iosevka', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Flat design: zero drop shadows */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --drop-shadow-sm: none;
+  --drop-shadow-md: none;
+  --drop-shadow-lg: none;
+  --drop-shadow-xl: none;
 }
 
 :root {
-  --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --background: #fafbfc;
-  --foreground: #1e293b;
-  --surface: #f1f5f9;
-  --surface-2: #ffffff;
-  --surface-3: #e2e8f0;
-  --muted: #64748b;
-  --border: rgba(148, 163, 184, 0.28);
-  --border-strong: rgba(15, 23, 42, 0.25);
-  --primary: #5560d6;
-  --primary-light: #4f46e5;
-  --card-bg: #ffffff;
-  --code-bg: #f8fafc;
-  --terminal-bar-bg: #e2e8f0;
-  --terminal-body-bg: #ffffff;
-  --terminal-text: #1e293b;
-  --terminal-muted: #64748b;
-  --terminal-border: rgba(148, 163, 184, 0.35);
+  --background: #FFFFFF;
+  --foreground: #111217;
+  --card: #FFFFFF;
+  --card-foreground: #111217;
+  --border: #CBD5E1;
+  --muted: #F4F4F6;
+  --muted-foreground: #64748B;
+  --primary: #432DD7;
+  --primary-foreground: #FFFFFF;
+  --primary-60: #6366F1;
+  --primary-70: #432DD7;
+  --secondary: #F4F4F5;
+  --secondary-foreground: #111217;
+  --accent: #F4F4F6;
+  --accent-foreground: #111217;
+  --status-success: #10B981;
+  --status-warning: #F59E0B;
+  --status-danger: #EF4444;
 }
 
 .dark {
-  --font-sans: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-heading), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "Iosevka", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --background: #0b0c14;
-  --foreground: #ffffff;
-  --surface: #141622;
-  --surface-2: #1a1d2c;
-  --surface-3: #131825;
-  --muted: #939db8;
-  --border: rgba(147, 157, 184, 0.16);
-  --border-strong: rgba(255, 255, 255, 0.18);
-  --primary: #5560d6;
-  --primary-light: #7980e0;
-  --card-bg: #141622;
-  --code-bg: #0b0c14;
-  --terminal-bar-bg: #141622;
-  --terminal-body-bg: #0b0c14;
-  --terminal-text: #dee2e6;
-  --terminal-muted: #939db8;
-  --terminal-border: rgba(147, 157, 184, 0.22);
+  /* Better Stack Dark Theme - Flat Border Architecture (matching tako/console) */
+  --background: #0B0C14;
+  --foreground: #FFFFFF;
+  --card: #0B0C14;
+  --card-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.12);
+  --muted: rgba(147, 157, 184, 0.10);
+  --muted-foreground: #939DB8;
+  --primary: #5B63D3;
+  --primary-foreground: #FFFFFF;
+  --primary-60: #98A4F7;
+  --primary-70: #7D87E8;
+  --secondary: #0B0C14;
+  --secondary-foreground: #FFFFFF;
+  --accent: rgba(147, 157, 184, 0.10);
+  --accent-foreground: #FFFFFF;
+  --status-success: #34D399;
+  --status-warning: #FBBF24;
+  --status-danger: #FF5A6A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -60,70 +97,47 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-}
-
-code, kbd, samp, pre {
-  font-family: var(--font-mono);
-}
-
-/* Animated deployment flow */
-@keyframes flow-dash {
-  to {
-    stroke-dashoffset: -24;
-  }
-}
-.animate-flow {
-  animation: flow-dash 1s linear infinite;
-}
-
-@keyframes step-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-step-in {
-  animation: step-in 0.35s ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-flow,
-  .animate-step-in {
-    animation: none;
-  }
-}
-
-/* Subtle dotted texture for hero backdrop */
-.dotgrid {
-  background-image: radial-gradient(circle, var(--border-strong) 1.1px, transparent 1.1px);
-  background-size: 26px 26px;
-}
-
-/* Custom scrollbar */
+/* Custom crisp scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+
+/* Subtle code syntax highlighting */
+.syntax-keyword {
+  color: var(--primary-60);
+}
+.syntax-string {
+  color: var(--status-success);
+}
+.syntax-comment {
+  color: var(--muted-foreground);
+}
+.syntax-flag {
+  color: var(--primary-70);
+}
+.syntax-value {
+  color: var(--status-warning);
+}
+.syntax-punct {
+  color: var(--muted-foreground);
+}
+
+/* Terminal cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.terminal-cursor {
+  animation: cursor-blink 1.1s step-end infinite;
 }
