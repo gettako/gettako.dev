@@ -31,7 +31,7 @@ const STEPS: Step[] = [
     step: "03",
     title: "Connect Worker & Push Git",
     desc: "Run on any remote worker server. The agent initiates an outbound gRPC stream to master. Push any branch to deploy.",
-    cmd: "curl -fsSL https://gettako.dev/install-agent.sh | \\\n  TAKO_SERVER_URL=\"https://tako.example.com:50051\" \\\n  TAKO_ENROLLMENT_TOKEN=\"tok_sec_7a9f82d1\" bash",
+    cmd: "curl -fsSL https://gettako.dev/install.sh | bash -s -- \\\n  --agent \\\n  --token \"tok_sec_7a9f82d1\" \\\n  --master \"https://tako.example.com:50051\"",
     detail: "Zero inbound ports needed. Traefik auto-requests Let's Encrypt SSL.",
   },
 ];
